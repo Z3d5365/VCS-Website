@@ -74,7 +74,7 @@ link rewrites). **Never hand-edit generated locale files** — edit the source a
 
 - **Project:** ZZ Digital — website & client portal (studio: Quickeasy Asia Co.,Ltd.,
   Tax ID `0505569001285`, Chiang Mai)
-- **Public URL:** https://zzdigitaldesign.com · **Repo:** github.com/Zed5365/ZZDigital (branch `main`)
+- **Public URL:** https://websites.vibecraftedsoftware.com · **Repo:** github.com/Z3d5365/VCS-Website (branch `main`)
 - **Hosting choice:** Static on **S3 + CloudFront**
 - **Bilingual:** **Yes** (EN source in `index.html` → `th/index.html` via `node build/build-th.js`)
 - **Client portal:** **Yes** — Supabase (admin-created + public sign-up); `/portal/` (client),
