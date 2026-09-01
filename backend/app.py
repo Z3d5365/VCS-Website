@@ -33,7 +33,7 @@ COOKIE_SECURE  = os.environ.get("COOKIE_SECURE", "0") == "1"
 ALLOWED_ORIGINS= [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "").split(",") if o.strip()]
 COOKIE_NAME    = "zz_session"
 TOKEN_DAYS     = 30
-UPLOADS_BUCKET = os.environ.get("UPLOADS_BUCKET", "zzdigital-client-uploads")
+UPLOADS_BUCKET = os.environ.get("UPLOADS_BUCKET", "vibecraftedsoftware-client-uploads")
 AWS_REGION     = os.environ.get("AWS_REGION", "ap-southeast-1")
 ALLOWED_IMG    = {"image/jpeg", "image/png", "image/webp", "image/gif", "image/svg+xml", "image/avif"}
 VISION_IMG     = {"image/jpeg", "image/png", "image/webp", "image/gif"}   # image types the vision model accepts

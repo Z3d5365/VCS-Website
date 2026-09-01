@@ -11,7 +11,7 @@
 # long cache. Uses --delete so files removed locally are removed from S3.
 set -euo pipefail
 
-BUCKET="zzdigital-client-files"
+BUCKET="vibecraftedsoftware-client-files"
 
 if [ "$#" -ne 3 ]; then
   echo "Usage: $0 <customer> <project> <local-folder>"
