@@ -82,7 +82,7 @@ link rewrites). **Never hand-edit generated locale files** — edit the source a
 - **Static infra:** S3 bucket **`websites.vibecraftedsoftware.com`** (`ap-southeast-1`, public
   static-website endpoint; deploy target), CloudFront `EBJNRLIZ8CTTY`, Route 53 zones
   `Z00211972T0UGXJIDKRSH` (zzdigitaldesign.com) + `Z06117583DJPW9PSW2YWH` (vibecraftedsoftware.com),
-  image bucket `zzdigital-website-images` (`us-east-1`). Live at
+  image bucket `wvcs-website-images` (`ap-southeast-1`). Live at
   `https://websites.vibecraftedsoftware.com`; `zzdigitaldesign.com` 301-redirects there via the
   CloudFront function `zzdigital-www-to-apex`. (Old `zzdigitaldesign.com` bucket retired.)
 - **Backend:** Supabase project `vdgdbjesjoyfkfhqgdna` (`https://vdgdbjesjoyfkfhqgdna.supabase.co`);
