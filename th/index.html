@@ -535,6 +535,9 @@ section[id] { padding-block: var(--section); }
 
 .rule { height: 1px; background: var(--line); border: 0; }
 
+/* ── 6b. Problem ───────────────────────────────────── */
+#problem { background: var(--bg-sunk); border-block: 1px solid var(--line); }
+
 /* ── 7. Services ──────────────────────────────────── */
 .cards {
   display: grid; gap: 1.25rem;
@@ -1024,6 +1027,49 @@ form {
       <div class="stat"><b data-i18n="stat.build.n">2 สัปดาห์</b><span data-i18n="stat.build">เวลาสร้างโดยเฉลี่ย</span></div>
       <div class="stat"><b data-i18n="stat.reply.n">24 ชม.</b><span data-i18n="stat.reply">ตอบทุกการติดต่อ</span></div>
     </dl>
+  </div>
+</section>
+
+<!-- ══ PROBLEM ═════════════════════════════════════ -->
+<section id="problem" aria-labelledby="problem-h">
+  <div class="shell">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow" data-i18n="problem.eyebrow">คุ้นๆ ไหม</span>
+      <h2 id="problem-h" data-i18n="problem.title">ยังใช้แค่เพจ Facebook อยู่ใช่ไหม</h2>
+      <p data-i18n="problem.sub">สามเหตุผลเงียบๆ ที่ทำให้ธุรกิจท้องถิ่นเสียลูกค้าออนไลน์ไปทุกสัปดาห์</p>
+    </div>
+
+    <div class="cards">
+      <article class="card" data-reveal data-tilt>
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3 2"/>
+          </svg>
+        </span>
+        <h3 data-i18n="prob1.title">ไม่มีเว็บไซต์จริง มีแค่เพจ</h3>
+        <p data-i18n="prob1.desc">เพจ Facebook จองคิวไม่ได้ แทบไม่ขึ้นบน Google และหน้าตาก็เหมือนเพจธุรกิจท้องถิ่นเจ้าอื่นๆ ทุกอย่าง</p>
+      </article>
+
+      <article class="card" data-reveal data-tilt style="--d:80ms">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3.5" width="7" height="7" rx="1.6"/><rect x="14" y="3.5" width="7" height="7" rx="1.6"/><rect x="8.5" y="14.5" width="7" height="7" rx="1.6"/>
+          </svg>
+        </span>
+        <h3 data-i18n="prob2.title">โลโก้ที่ดูไม่เหมือนกันในแต่ละที่</h3>
+        <p data-i18n="prob2.desc">ป้ายหน้าร้านแบบหนึ่ง Facebook อีกแบบ ใบแจ้งหนี้เบลอๆ อีกแบบ — ไม่มีอะไรตรงกันเลย และลูกค้าก็สังเกตเห็น</p>
+      </article>
+
+      <article class="card" data-reveal data-tilt style="--d:160ms">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.3-4.3"/>
+          </svg>
+        </span>
+        <h3 data-i18n="prob3.title">คู่แข่งโผล่มาก่อนคุณ</h3>
+        <p data-i18n="prob3.desc">ไม่มี Google Business Profile ไม่มีรีวิว ไม่มีอะไรให้ Maps แสดง — พอมีคนค้นหาธุรกิจแถวนั้น ร้านข้างๆ เลยได้ลูกค้าไป</p>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -1533,6 +1579,15 @@ form {
     "stat.build": "เวลาสร้างโดยเฉลี่ย",
     "stat.reply.n": "24 ชม.",
     "stat.reply": "ตอบทุกการติดต่อ",
+    "problem.eyebrow": "คุ้นๆ ไหม",
+    "problem.title": "ยังใช้แค่เพจ Facebook อยู่ใช่ไหม",
+    "problem.sub": "สามเหตุผลเงียบๆ ที่ทำให้ธุรกิจท้องถิ่นเสียลูกค้าออนไลน์ไปทุกสัปดาห์",
+    "prob1.title": "ไม่มีเว็บไซต์จริง มีแค่เพจ",
+    "prob1.desc": "เพจ Facebook จองคิวไม่ได้ แทบไม่ขึ้นบน Google และหน้าตาก็เหมือนเพจธุรกิจท้องถิ่นเจ้าอื่นๆ ทุกอย่าง",
+    "prob2.title": "โลโก้ที่ดูไม่เหมือนกันในแต่ละที่",
+    "prob2.desc": "ป้ายหน้าร้านแบบหนึ่ง Facebook อีกแบบ ใบแจ้งหนี้เบลอๆ อีกแบบ — ไม่มีอะไรตรงกันเลย และลูกค้าก็สังเกตเห็น",
+    "prob3.title": "คู่แข่งโผล่มาก่อนคุณ",
+    "prob3.desc": "ไม่มี Google Business Profile ไม่มีรีวิว ไม่มีอะไรให้ Maps แสดง — พอมีคนค้นหาธุรกิจแถวนั้น ร้านข้างๆ เลยได้ลูกค้าไป",
     "services.eyebrow": "สิ่งที่เราทำ",
     "services.title": "สามอย่าง ทำอย่างตั้งใจ",
     "services.sub": "ทุกอย่างสร้างด้วยมือและโฮสต์บน CDN ทั่วโลกที่รวดเร็ว คุณเป็นเจ้าของโค้ด โดเมน และเนื้อหา — เสมอ",
