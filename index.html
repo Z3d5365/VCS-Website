@@ -11,7 +11,7 @@
 <link rel="alternate" hreflang="x-default" href="https://websites.vibecraftedsoftware.com/">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0c0c0c" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#fbfaf8" media="(prefers-color-scheme: light)">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Vibe Crafted">
@@ -113,7 +113,7 @@
 /* ── 1. Tokens ─────────────────────────────────────── */
 :root {
   /* light is the base layer */
-  --bg:            #ffffff;
+  --bg:            #fbfaf8;
   --bg-sunk:       #f0f0f0;
   --surface:       #ffffff;
   --surface-2:     #f7f7f7;
@@ -665,6 +665,7 @@ section[id] { padding-block: var(--section); }
 .step p { font-size: .9rem; color: var(--text-soft); }
 
 /* ── 10. Pricing ──────────────────────────────────── */
+#pricing { background: var(--bg-sunk); border-block: 1px solid var(--line); }
 .price-grid {
   display: grid; gap: 1.25rem;
   grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
@@ -751,7 +752,6 @@ section[id] { padding-block: var(--section); }
 }
 
 /* ── 11. Quote ────────────────────────────────────── */
-#voices { background: var(--bg-sunk); border-block: 1px solid var(--line); }
 .quotes { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
 .quote {
   padding: 1.6rem;
@@ -774,6 +774,7 @@ section[id] { padding-block: var(--section); }
 .quote figcaption span { display: block; color: var(--text-muted); font-size: .8125rem; }
 
 /* ── 12. FAQ ──────────────────────────────────────── */
+#faq { background: var(--bg-sunk); border-block: 1px solid var(--line); }
 .faq { display: grid; gap: .5rem; max-width: 48rem; }
 details {
   border: 1px solid var(--line); border-radius: var(--r);

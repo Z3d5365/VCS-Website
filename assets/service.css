@@ -1,6 +1,6 @@
 /* Shared styles for ZZDigital service subpages (/services/… and /th/services/…). */
 :root{
-  --bg:#fbfaf8;--surface:#fff;--surface-2:#f7f5f2;--text:#131118;--text-soft:#4a4652;--text-muted:#7b7684;
+  --bg:#fbfaf8;--bg-sunk:#f1eee7;--surface:#fff;--surface-2:#f7f5f2;--text:#131118;--text-soft:#4a4652;--text-muted:#7b7684;
   --line:#e6e2dc;--line-strong:#d5d0c8;--accent:#6d5efc;--accent-ink:#fff;
   --grad:linear-gradient(100deg,#6d5efc 0%,#8b5cf6 38%,#0fb894 100%);
   --mint:#0fb894;--r-lg:24px;--r-sm:10px;--shadow-sm:0 1px 2px rgba(19,17,24,.06),0 2px 8px rgba(19,17,24,.04);
@@ -8,13 +8,13 @@
   --font:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0a0a0f;--surface:#12121b;--surface-2:#191924;--text:#f4f3f8;--text-soft:#bdb9c9;--text-muted:#8d889c;
+  --bg:#0a0a0f;--bg-sunk:#050508;--surface:#12121b;--surface-2:#191924;--text:#f4f3f8;--text-soft:#bdb9c9;--text-muted:#8d889c;
   --line:#23232f;--line-strong:#33333f;--accent:#8b7dff;
   --grad:linear-gradient(100deg,#8b7dff 0%,#a78bfa 38%,#2ee0b5 100%);--mint:#2ee0b5;
   --shadow-sm:0 1px 2px rgba(0,0,0,.5);
 }}
 :root[data-theme="dark"]{
-  --bg:#0a0a0f;--surface:#12121b;--surface-2:#191924;--text:#f4f3f8;--text-soft:#bdb9c9;--text-muted:#8d889c;
+  --bg:#0a0a0f;--bg-sunk:#050508;--surface:#12121b;--surface-2:#191924;--text:#f4f3f8;--text-soft:#bdb9c9;--text-muted:#8d889c;
   --line:#23232f;--line-strong:#33333f;--accent:#8b7dff;
   --grad:linear-gradient(100deg,#8b7dff 0%,#a78bfa 38%,#2ee0b5 100%);--mint:#2ee0b5;
   --shadow-sm:0 1px 2px rgba(0,0,0,.5);
@@ -48,6 +48,7 @@ h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:tex
 .btn--ghost{border:1px solid var(--line-strong);color:var(--text)}
 .cta-row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem}
 section.block{padding-block:2.2rem}
+section.block:nth-of-type(even){background:var(--bg-sunk);border-block:1px solid var(--line)}
 h2{font-size:clamp(1.5rem,1.2rem+1.4vw,2rem);letter-spacing:-.01em;margin-bottom:.4rem}
 .block>.shell>p{color:var(--text-soft);max-width:46rem}
 .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin-top:1.3rem}
