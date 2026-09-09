@@ -26,11 +26,11 @@ const replaceOne = (html, find, repl, label) => {
 };
 
 /* Thai metadata (hand-written — refine as needed). */
-const TH_TITLE   = "รับทำเว็บไซต์ เชียงใหม่ &amp; ทั่วไทย — Vibe Crafted";
-const TH_DESC    = "Vibe Crafted สตูดิโอดิจิทัลในเชียงใหม่ รับทำเว็บไซต์โหลดเร็วสร้างด้วยมือ พร้อมโลโก้และโฮสติ้ง สำหรับร้านอาหาร รีสอร์ต และธุรกิจท้องถิ่นทั่วไทย เริ่มต้น ฿2,999";
-const TH_OG_DESC = "เว็บไซต์ โลโก้ และโฮสติ้งที่สร้างด้วยมือ โหลดเร็ว สำหรับธุรกิจในเชียงใหม่และทั่วไทย เริ่มต้น ฿2,999";
+const TH_TITLE   = "รับทำเว็บไซต์โหลดเร็ว สร้างด้วยมือ — Vibe Crafted";
+const TH_DESC    = "Vibe Crafted สตูดิโอดิจิทัล รับทำเว็บไซต์โหลดเร็วสร้างด้วยมือ พร้อมโลโก้และโฮสติ้ง สำหรับร้านอาหาร รีสอร์ต และธุรกิจท้องถิ่น เริ่มต้น ฿2,999";
+const TH_OG_DESC = "เว็บไซต์ โลโก้ และโฮสติ้งที่สร้างด้วยมือ โหลดเร็ว สำหรับธุรกิจท้องถิ่น เริ่มต้น ฿2,999";
 const TH_TW_DESC = "เว็บไซต์และโลโก้ที่สร้างด้วยมือ เปิดตัวได้ในสองสัปดาห์";
-const TH_PS_DESC = "สตูดิโอดิจิทัลในเชียงใหม่ รับทำเว็บไซต์โหลดเร็วสร้างด้วยมือ พร้อมโลโก้และโฮสติ้ง สำหรับร้านอาหาร รีสอร์ต และธุรกิจท้องถิ่นทั่วไทย";
+const TH_PS_DESC = "สตูดิโอดิจิทัล รับทำเว็บไซต์โหลดเร็วสร้างด้วยมือ พร้อมโลโก้และโฮสติ้ง สำหรับร้านอาหาร รีสอร์ต และธุรกิจท้องถิ่น";
 
 /* English FAQ strings (as they appear in the JSON-LD) → mapped to Thai by key. */
 const FAQ_EN = {
@@ -42,7 +42,7 @@ const FAQ_EN = {
   "faq3.a": "Yes, and you should own it yourself rather than have an agency hold it. I'll register it in your name and bill you what it costs — usually around ฿400–600 a year. You keep the account.",
   "faq4.q": "Who owns the site and the content?",
   "faq4.a": "You do, entirely. The code, the design, the logo, the domain, the logins. There's no licence to renew and no lock-in. If you ever move to another developer, everything transfers.",
-  "faq5.q": "Can you work with a business outside Thailand?",
+  "faq5.q": "Can you work with a business remotely?",
   "faq5.a": "Yes — most communication happens over email, LINE or a video call anyway. I work in Indochina Time (UTC+7) and reply within a day. Payment by international transfer or card.",
   "faq6.q": "Will it be fast, and will Google like it?",
   "faq6.a": "Every site is hand-built and lands under two seconds on a normal 4G connection, with green Core Web Vitals. Structured data, sitemap, meta descriptions and Google Business Profile are part of the base price, not an upsell."
@@ -72,9 +72,9 @@ Object.keys(TH).forEach(key => {
 });
 
 /* 6. Title + social meta */
-html = replaceOne(html, "Web Design in Chiang Mai &amp; Thailand — Vibe Crafted", TH_TITLE, "title/og:title/twitter:title");
-html = replaceOne(html, "Fast, hand-built websites, logos and hosting for restaurants, resorts and local businesses in Chiang Mai and across Thailand. Launch in two weeks — from ฿2,999.", TH_DESC, "meta description");
-html = replaceOne(html, "Fast, hand-built websites, logos and hosting for restaurants, resorts and local businesses in Chiang Mai and across Thailand. From ฿2,999.", TH_OG_DESC, "og:description");
+html = replaceOne(html, "Fast, Hand-Built Websites — Vibe Crafted", TH_TITLE, "title/og:title/twitter:title");
+html = replaceOne(html, "Fast, hand-built websites, logos and hosting for restaurants, resorts and local businesses. Launch in two weeks — from ฿2,999.", TH_DESC, "meta description");
+html = replaceOne(html, "Fast, hand-built websites, logos and hosting for restaurants, resorts and local businesses. From ฿2,999.", TH_OG_DESC, "og:description");
 html = replaceOne(html, "Fast, hand-built websites, logos and hosting. Launch in two weeks.", TH_TW_DESC, "twitter:description");
 
 /* 7. Canonical + og:url + locales → Thai URL */
