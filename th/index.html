@@ -587,7 +587,7 @@ section[id] { padding-block: var(--section); }
 /* ── 8. Work ──────────────────────────────────────── */
 #work { background: var(--bg-sunk); border-block: 1px solid var(--line); }
 
-.work-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); }
+.work-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr)); }
 
 .project {
   display: flex; flex-direction: column;
@@ -1129,7 +1129,7 @@ form {
     <div class="section-head" data-reveal>
       <span class="eyebrow" data-i18n="work.eyebrow">ผลงานที่คัดสรร</span>
       <h2 id="work-h" data-i18n="work.title">โปรเจกต์ล่าสุด</h2>
-      <p data-i18n="work.sub">สามชิ้นที่เป็นตัวแทน ถามมาได้เลย เดี๋ยวเล่าให้ฟังทั้งหมด รวมถึงสิ่งที่เราจะทำต่างออกไปในวันนี้</p>
+      <p data-i18n="work.sub">สี่ชิ้นที่เป็นตัวแทน ถามมาได้เลย เดี๋ยวเล่าให้ฟังทั้งหมด รวมถึงสิ่งที่เราจะทำต่างออกไปในวันนี้</p>
     </div>
 
     <div class="work-grid">
@@ -1172,6 +1172,18 @@ form {
           <h3>MDH Innovation Hub</h3>
           <p data-i18n="proj3.desc">สามธุรกิจ — เอาต์ซอร์ส โคเวิร์กกิ้ง และก่อสร้าง — ภายใต้หลังคาเดียว ด้วยโครงสร้างที่ให้แต่ละธุรกิจถูกค้นเจอได้ในแบบของตัวเอง</p>
           <div class="tags"><span class="tag" data-i18n="proj3.tag1">ออกแบบข้อมูล</span><span class="tag" data-i18n="proj3.tag2">เก็บลูกค้ามุ่งหวัง</span><span class="tag">CMS</span></div>
+        </div>
+      </article>
+
+      <article class="project" data-reveal style="--d:300ms">
+        <div class="shot shot-2 shot--img">
+          <img src="https://wvcs-website-images.s3.ap-southeast-1.amazonaws.com/vibe-crafted-software.jpg" alt="Vibe Crafted Software website — a custom business software product site built by Vibe Crafted" width="1200" height="750" loading="lazy" decoding="async">
+        </div>
+        <div class="project-body">
+          <p class="project-kind" data-i18n="proj4.kind">ซอฟต์แวร์ · เว็บไซต์ผลิตภัณฑ์</p>
+          <h3>Vibe Crafted Software</h3>
+          <p data-i18n="proj4.desc">ซอฟต์แวร์ธุรกิจสั่งทำที่ขายแข่งกับ ERP ที่ใหญ่เกินจำเป็น หน้าแลนดิงโทนมืดที่มั่นใจ เริ่มด้วยการชี้ปัญหาให้ชัด แล้วทำให้การเริ่มโปรเจกต์เป็นก้าวถัดไปที่ชัดเจนที่สุด</p>
+          <div class="tags"><span class="tag" data-i18n="proj4.tag1">วางตำแหน่งแบรนด์</span><span class="tag" data-i18n="proj4.tag2">ดีไซน์โทนมืด</span><span class="tag" data-i18n="proj4.tag3">เก็บลูกค้ามุ่งหวัง</span></div>
         </div>
       </article>
     </div>
@@ -1603,7 +1615,7 @@ form {
     "svc3.more": "รับทำ SEO ท้องถิ่น →",
     "work.eyebrow": "ผลงานที่คัดสรร",
     "work.title": "โปรเจกต์ล่าสุด",
-    "work.sub": "สามชิ้นที่เป็นตัวแทน ถามมาได้เลย เดี๋ยวเล่าให้ฟังทั้งหมด รวมถึงสิ่งที่เราจะทำต่างออกไปในวันนี้",
+    "work.sub": "สี่ชิ้นที่เป็นตัวแทน ถามมาได้เลย เดี๋ยวเล่าให้ฟังทั้งหมด รวมถึงสิ่งที่เราจะทำต่างออกไปในวันนี้",
     "proj1.kind": "SaaS · เว็บแอป",
     "proj1.desc": "แพลตฟอร์มรวบรวมรีวิวสำหรับธุรกิจท้องถิ่น: แดชบอร์ดจัดการเอง ตั้งค่าแยกรายลูกค้า และขั้นตอนที่เปลี่ยนลูกค้าที่พอใจให้กลายเป็นรีวิวสาธารณะ",
     "proj1.tag1": "แดชบอร์ด",
@@ -1617,6 +1629,11 @@ form {
     "proj3.desc": "สามธุรกิจ — เอาต์ซอร์ส โคเวิร์กกิ้ง และก่อสร้าง — ภายใต้หลังคาเดียว ด้วยโครงสร้างที่ให้แต่ละธุรกิจถูกค้นเจอได้ในแบบของตัวเอง",
     "proj3.tag1": "ออกแบบข้อมูล",
     "proj3.tag2": "เก็บลูกค้ามุ่งหวัง",
+    "proj4.kind": "ซอฟต์แวร์ · เว็บไซต์ผลิตภัณฑ์",
+    "proj4.desc": "ซอฟต์แวร์ธุรกิจสั่งทำที่ขายแข่งกับ ERP ที่ใหญ่เกินจำเป็น หน้าแลนดิงโทนมืดที่มั่นใจ เริ่มด้วยการชี้ปัญหาให้ชัด แล้วทำให้การเริ่มโปรเจกต์เป็นก้าวถัดไปที่ชัดเจนที่สุด",
+    "proj4.tag1": "วางตำแหน่งแบรนด์",
+    "proj4.tag2": "ดีไซน์โทนมืด",
+    "proj4.tag3": "เก็บลูกค้ามุ่งหวัง",
     "process.eyebrow": "ขั้นตอนการทำงาน",
     "process.title": "สี่ขั้นตอน ประมาณสองสัปดาห์",
     "process.sub": "ไม่มีพิธีรีตองแบบเอเจนซี คุณคุยกับคนที่ลงมือทำจริงตั้งแต่ต้นจนจบ",
