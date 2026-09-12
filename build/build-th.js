@@ -36,14 +36,14 @@ const TH_PS_DESC = "สตูดิโอดิจิทัล รับทำ�
 const FAQ_EN = {
   "faq1.q": "How long does a website take?",
   "faq1.a": "Two weeks is typical from the moment you send content and photos. A simple one-page site can be live in three or four days. If you have a hard deadline, say so on the first call and I'll tell you honestly whether it's possible.",
-  "faq2.q": "What does the ฿899 monthly upkeep actually cover?",
-  "faq2.a": "Hosting, SSL, daily backups, software and security updates, uptime monitoring, and up to an hour of small content changes each month — new prices, new photos, opening hours. It's optional. Cancel any month and I'll hand over the files.",
+  "faq2.q": "What does the monthly upkeep actually cover?",
+  "faq2.a": "Hosting, SSL, daily backups, software and security updates, uptime monitoring, and up to an hour of small content changes each month — new prices, new photos, opening hours. Cancel any month and I'll hand over the files.",
   "faq3.q": "Do I need my own domain name?",
-  "faq3.a": "Yes, and you should own it yourself rather than have an agency hold it. I'll register it in your name and bill you what it costs — usually around ฿400–600 a year. You keep the account.",
+  "faq3.a": "Yes, and you should own it yourself rather than have an agency hold it. I'll register it in your name and bill you what it costs. You keep the account.",
   "faq4.q": "Who owns the site and the content?",
   "faq4.a": "You do, entirely. The code, the design, the logo, the domain, the logins. There's no licence to renew and no lock-in. If you ever move to another developer, everything transfers.",
   "faq5.q": "Can you work with a business remotely?",
-  "faq5.a": "Yes — most communication happens over email, LINE or a video call anyway. I work in Indochina Time (UTC+7) and reply within a day. Payment by international transfer or card.",
+  "faq5.a": "Yes — most communication happens over email, WhatsApp or a video call anyway. I work in Indochina Time (UTC+7) and reply within a day. Payment by international transfer or card.",
   "faq6.q": "Will it be fast, and will Google like it?",
   "faq6.a": "Every site is hand-built and lands under two seconds on a normal 4G connection, with green Core Web Vitals. Structured data, sitemap, meta descriptions and Google Business Profile are part of the base price, not an upsell."
 };
@@ -102,6 +102,14 @@ html = replaceOne(html,
 html = html.split('href="/services/').join('href="/th/services/');
 /* 9c. The brand/home link → Thai home */
 html = html.split('href="/" aria-label').join('href="/th/" aria-label');
+
+/* 9d. Prices: bake baht in and drop the currency switch (Thai page is THB only). */
+html = html.replace(/(<b data-thb="([^"]*)"[^>]*>)[^<]*(<\/b>)/g, (mm, a, thb, c) => a + thb + c);
+{
+  const before = html;
+  html = html.replace(/[ \t]*<!-- cur-switch:start -->[\s\S]*?<!-- cur-switch:end -->\r?\n?/, "");
+  if (html === before) { console.warn("  ! not found: cur-switch block"); warnings++; }
+}
 
 /* 10. Write output */
 const outDir = path.join(ROOT, "th");

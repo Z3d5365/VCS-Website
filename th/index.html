@@ -78,13 +78,13 @@
     },
     {
       "@type": "Question",
-      "name": "ค่าดูแลรายเดือน ฿899 ครอบคลุมอะไรบ้าง?",
-      "acceptedAnswer": { "@type": "Answer", "text": "โฮสติ้ง, SSL, สำรองข้อมูลรายวัน, อัปเดตซอฟต์แวร์และความปลอดภัย, เฝ้าระวังการทำงาน และแก้ไขเนื้อหาเล็กน้อยได้สูงสุดหนึ่งชั่วโมงต่อเดือน — ราคาใหม่ รูปใหม่ เวลาเปิด-ปิด เป็นทางเลือก ยกเลิกเดือนไหนก็ได้ แล้วผมจะส่งไฟล์ให้" }
+      "name": "ค่าดูแลรายเดือนครอบคลุมอะไรบ้าง?",
+      "acceptedAnswer": { "@type": "Answer", "text": "โฮสติ้ง, SSL, สำรองข้อมูลรายวัน, อัปเดตซอฟต์แวร์และความปลอดภัย, เฝ้าระวังการทำงาน และแก้ไขเนื้อหาเล็กน้อยได้สูงสุดหนึ่งชั่วโมงต่อเดือน — ราคาใหม่ รูปใหม่ เวลาเปิด-ปิด ยกเลิกเดือนไหนก็ได้ แล้วผมจะส่งไฟล์ให้" }
     },
     {
       "@type": "Question",
       "name": "ผมต้องมีชื่อโดเมนของตัวเองไหม?",
-      "acceptedAnswer": { "@type": "Answer", "text": "ใช่ และคุณควรเป็นเจ้าของเองแทนที่จะให้เอเจนซีถือไว้ ผมจะจดทะเบียนในชื่อคุณและคิดตามราคาจริง — โดยปกติราว ฿400–600 ต่อปี บัญชีเป็นของคุณ" }
+      "acceptedAnswer": { "@type": "Answer", "text": "ใช่ และคุณควรเป็นเจ้าของเองแทนที่จะให้เอเจนซีถือไว้ ผมจะจดทะเบียนในชื่อคุณและคิดตามราคาจริง บัญชีเป็นของคุณ" }
     },
     {
       "@type": "Question",
@@ -355,7 +355,7 @@ p { text-wrap: pretty; }
   white-space: nowrap;
 }
 .brand-name { display: inline-flex; flex-direction: column; align-items: center; line-height: 1.08; text-transform: uppercase; letter-spacing: .04em; }
-.brand-sub { color: var(--text-muted); font-weight: 500; font-size: .6em; letter-spacing: .22em; text-transform: uppercase; margin-top: 1px; }
+.brand-sub { color: var(--text-muted); font-weight: 500; font-size: .6em; letter-spacing: .68em; padding-inline-start: .68em; text-transform: uppercase; margin-top: 1px; }
 .form-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .mark {
   width: 2rem; height: 2rem;
@@ -454,10 +454,6 @@ h1 {
 .hero-cta {
   display: flex; flex-wrap: wrap; gap: .75rem;
   margin-block-start: 2rem;
-}
-.hero-note {
-  margin-block-start: 1.25rem;
-  font-size: .8125rem; color: var(--text-muted);
 }
 
 /* stat strip */
@@ -672,7 +668,7 @@ section[id] { padding-block: var(--section); }
 .price-grid {
   display: grid; gap: 1.25rem;
   grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
-  align-items: start;
+  align-items: stretch;
 }
 .plan {
   position: relative;
@@ -722,7 +718,6 @@ section[id] { padding-block: var(--section); }
 }
 .cur-opt:hover { color: var(--text); }
 .cur-opt.is-active { background: var(--surface); color: var(--text); box-shadow: var(--shadow-sm); }
-.cur-note { font-size: .8125rem; color: var(--text-muted); }
 
 /* language switch */
 .lang-switch {
@@ -999,7 +994,6 @@ form {
           </a>
           <a class="btn btn--ghost" href="#work" data-i18n="hero.cta2">ดูผลงานล่าสุด</a>
         </div>
-        <p class="hero-note" data-i18n="hero.note">เริ่มต้น ฿899 · อังกฤษ &amp; ไทย · รับงานทั่วโลก</p>
       </div>
 
       <div data-reveal style="--d:120ms">
@@ -1230,22 +1224,15 @@ form {
     <div class="section-head" data-reveal>
       <span class="eyebrow" data-i18n="pricing.eyebrow">ราคา</span>
       <h2 id="pricing-h" data-i18n="pricing.title">ตัวเลขชัดเจน ไม่มีแพ็กเกจให้ตีความ</h2>
-      <p data-i18n="pricing.sub">ราคารวมทุกอย่าง ค่าดูแลเป็นทางเลือกและยกเลิกได้ทุกเดือน</p>
+      <p data-i18n="pricing.sub">ราคารวมทุกอย่าง ค่าดูแลและการแก้ไขเล็กน้อยรวมอยู่ในแพ็กเกจโฮสติ้งแล้ว</p>
     </div>
 
-    <div class="cur-switch" data-reveal>
-      <div class="cur-toggle" role="group" aria-label="Display currency">
-        <button type="button" class="cur-opt is-active" data-cur="thb" aria-pressed="true">฿ THB</button>
-        <button type="button" class="cur-opt" data-cur="usd" aria-pressed="false">$ USD</button>
-      </div>
-      <span class="cur-note" data-i18n="cur.note">คิดเงินเป็นบาท — ดอลลาร์แสดงเป็นค่าประมาณ</span>
-    </div>
 
     <div class="price-grid">
       <div class="plan" data-reveal>
         <h3 data-i18n="plan1.title">โลโก้และแบรนด์มาร์ก</h3>
         <p data-i18n="plan1.desc">สำหรับธุรกิจที่ต้องดูเป็นมืออาชีพ</p>
-        <div class="amount"><span class="from" data-i18n="price.from">เริ่มต้น</span> <b data-thb="฿2,999" data-usd="$85">฿2,999</b></div>
+        <div class="amount"><span class="from" data-i18n="price.from">เริ่มต้น</span> <b data-thb="฿2,999" data-usd="$85" data-zar="R1,499">฿2,999</b></div>
         <p class="upkeep" data-i18n="plan1.upkeep">จ่ายครั้งเดียว · 3–5 วัน</p>
         <ul class="feat">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> <span data-i18n="plan1.f1">สามแนวคิด เลือกขัดเกลาหนึ่ง</span></li>
@@ -1260,7 +1247,7 @@ form {
         <span class="plan-flag" data-i18n="plan2.flag">เลือกมากที่สุด</span>
         <h3 data-i18n="plan2.title">เว็บไซต์</h3>
         <p data-i18n="plan2.desc">เว็บไซต์ครบวงจรสำหรับธุรกิจของคุณ สร้างมาเพื่อให้ถูกค้นเจอ</p>
-        <div class="amount"><span class="from" data-i18n="price.from">เริ่มต้น</span> <b data-thb="฿19,999" data-usd="$570">฿19,999</b></div>
+        <div class="amount"><span class="from" data-i18n="price.from">เริ่มต้น</span> <b data-thb="฿19,999" data-usd="$570" data-zar="R9,999">฿19,999</b></div>
         <ul class="feat">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> <span data-i18n="plan2.f1">สูงสุด 6 หน้า ออกแบบมือถือก่อน</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> <span data-i18n="plan2.f2">แบบฟอร์มสอบถาม แผนที่ โซเชียล</span></li>
@@ -1276,7 +1263,7 @@ form {
       <div class="plan" data-reveal style="--d:180ms">
         <h3 data-i18n="plan3.title">โฮสติ้งและดูแลเว็บ</h3>
         <p data-i18n="plan3.desc">ทำให้เว็บของคุณเร็ว ปลอดภัย และอัปเดตอยู่เสมอ</p>
-        <div class="amount"><span class="from" data-i18n="price.from">เริ่มต้น</span> <b data-thb="฿899" data-usd="$26">฿899</b><span class="from" data-i18n="price.permonth">/เดือน</span></div>
+        <div class="amount"><span class="from" data-i18n="price.from">เริ่มต้น</span> <b data-thb="฿899" data-usd="$26" data-zar="R499">฿899</b><span class="from" data-i18n="price.permonth">/เดือน</span></div>
         <ul class="feat">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> <span data-i18n="plan3.f1">โฮสติ้งที่เชื่อถือได้ SSL และสำรองข้อมูล</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> <span data-i18n="plan3.f2">อัปเดตความปลอดภัยและเฝ้าระวัง</span></li>
@@ -1288,14 +1275,15 @@ form {
     </div>
 
     <p class="price-foot" data-reveal>
-      <span data-i18n="pricefoot.1">โอนเงิน พร้อมเพย์ หรือบัตร</span>
+      <span data-i18n="pricefoot.1">โอนเงินหรือพร้อมเพย์</span>
       <span data-i18n="pricefoot.2">คิดค่าโดเมนตามจริง</span>
       <span data-i18n="pricefoot.3">ยกเลิกค่าดูแลได้ทุกเมื่อ — เว็บยังเป็นของคุณ</span>
     </p>
   </div>
 </section>
 
-<!-- ══ VOICES ═════════════════════════════════════ -->
+<!-- ══ VOICES — hidden until real testimonials are in. Restore by deleting the two wrapper lines. ══ -->
+<!--
 <section id="voices" aria-labelledby="voices-h">
   <div class="shell">
     <div class="section-head" data-reveal>
@@ -1330,6 +1318,7 @@ form {
     </div>
   </div>
 </section>
+-->
 
 <!-- ══ FAQ ════════════════════════════════════════ -->
 <section id="faq" aria-labelledby="faq-h">
@@ -1345,12 +1334,12 @@ form {
         <p data-i18n="faq1.a">โดยทั่วไปประมาณสองสัปดาห์นับจากที่คุณส่งเนื้อหาและรูป เว็บหน้าเดียวง่าย ๆ อาจขึ้นได้ใน 3–4 วัน ถ้ามีเดดไลน์ที่แน่นอน บอกได้ในการคุยครั้งแรก แล้วผมจะบอกตรง ๆ ว่าเป็นไปได้ไหม</p>
       </details>
       <details>
-        <summary data-i18n="faq2.q">ค่าดูแลรายเดือน ฿899 ครอบคลุมอะไรบ้าง?</summary>
-        <p data-i18n="faq2.a">โฮสติ้ง, SSL, สำรองข้อมูลรายวัน, อัปเดตซอฟต์แวร์และความปลอดภัย, เฝ้าระวังการทำงาน และแก้ไขเนื้อหาเล็กน้อยได้สูงสุดหนึ่งชั่วโมงต่อเดือน — ราคาใหม่ รูปใหม่ เวลาเปิด-ปิด เป็นทางเลือก ยกเลิกเดือนไหนก็ได้ แล้วผมจะส่งไฟล์ให้</p>
+        <summary data-i18n="faq2.q">ค่าดูแลรายเดือนครอบคลุมอะไรบ้าง?</summary>
+        <p data-i18n="faq2.a">โฮสติ้ง, SSL, สำรองข้อมูลรายวัน, อัปเดตซอฟต์แวร์และความปลอดภัย, เฝ้าระวังการทำงาน และแก้ไขเนื้อหาเล็กน้อยได้สูงสุดหนึ่งชั่วโมงต่อเดือน — ราคาใหม่ รูปใหม่ เวลาเปิด-ปิด ยกเลิกเดือนไหนก็ได้ แล้วผมจะส่งไฟล์ให้</p>
       </details>
       <details>
         <summary data-i18n="faq3.q">ผมต้องมีชื่อโดเมนของตัวเองไหม?</summary>
-        <p data-i18n="faq3.a">ใช่ และคุณควรเป็นเจ้าของเองแทนที่จะให้เอเจนซีถือไว้ ผมจะจดทะเบียนในชื่อคุณและคิดตามราคาจริง — โดยปกติราว ฿400–600 ต่อปี บัญชีเป็นของคุณ</p>
+        <p data-i18n="faq3.a">ใช่ และคุณควรเป็นเจ้าของเองแทนที่จะให้เอเจนซีถือไว้ ผมจะจดทะเบียนในชื่อคุณและคิดตามราคาจริง บัญชีเป็นของคุณ</p>
       </details>
       <details>
         <summary data-i18n="faq4.q">ใครเป็นเจ้าของเว็บและเนื้อหา?</summary>
@@ -1520,7 +1509,7 @@ form {
   </div>
 
   <div class="shell footer-corp">
-    <p><strong>Quickeasy Asia Co.,Ltd.</strong> · Tax ID 0505569001285</p>
+    <p><strong>Vibe Crafted Software Co. Ltd.</strong> · Tax ID 0505569001285</p>
     <p>108 Moo 8, T. Ontai, San Kamphaeng District, Chiang Mai Province, 50130, Thailand</p>
   </div>
 
@@ -1580,7 +1569,6 @@ form {
     "hero.lede": "Vibe Crafted สร้างเว็บไซต์และแบรนด์ที่สวยงามและโหลดเร็ว สำหรับร้านอาหาร รีสอร์ต และธุรกิจท้องถิ่น — ที่ไหนก็ตามที่มีอินเทอร์เน็ตดี ๆ ไม่ใช้เครื่องมือสำเร็จรูป ไม่มีส่วนเกิน ไม่มีค่าใช้จ่ายแอบแฝงรายเดือน",
     "hero.cta1": "ขอใบเสนอราคาภายใน 24 ชั่วโมง",
     "hero.cta2": "ดูผลงานล่าสุด",
-    "hero.note": "เริ่มต้น ฿899 · อังกฤษ &amp; ไทย · รับงานทั่วโลก",
     "stat.load": "เวลาโหลดทั่วไปบน 4G",
     "stat.build.n": "2 สัปดาห์",
     "stat.build": "เวลาสร้างโดยเฉลี่ย",
@@ -1647,8 +1635,7 @@ form {
     "step4.desc": "เราชี้โดเมนของคุณ ส่งให้ Google และมอบข้อมูลล็อกอินให้ จากนั้นดูแลต่อ ถ้าคุณต้องการ",
     "pricing.eyebrow": "ราคา",
     "pricing.title": "ตัวเลขชัดเจน ไม่มีแพ็กเกจให้ตีความ",
-    "pricing.sub": "ราคารวมทุกอย่าง ค่าดูแลเป็นทางเลือกและยกเลิกได้ทุกเดือน",
-    "cur.note": "คิดเงินเป็นบาท — ดอลลาร์แสดงเป็นค่าประมาณ",
+    "pricing.sub": "ราคารวมทุกอย่าง ค่าดูแลและการแก้ไขเล็กน้อยรวมอยู่ในแพ็กเกจโฮสติ้งแล้ว",
     "price.from": "เริ่มต้น",
     "price.permonth": "/เดือน",
     "cta.enquire": "สอบถาม",
@@ -1673,7 +1660,7 @@ form {
     "plan3.f2": "อัปเดตความปลอดภัยและเฝ้าระวัง",
     "plan3.f3": "แก้ไขเนื้อหาเล็ก ๆ น้อย ๆ เมื่อคุณต้องการ",
     "plan3.f4": "ยกเลิกได้ทุกเมื่อ — เว็บยังเป็นของคุณ",
-    "pricefoot.1": "โอนเงิน พร้อมเพย์ หรือบัตร",
+    "pricefoot.1": "โอนเงินหรือพร้อมเพย์",
     "pricefoot.2": "คิดค่าโดเมนตามจริง",
     "pricefoot.3": "ยกเลิกค่าดูแลได้ทุกเมื่อ — เว็บยังเป็นของคุณ",
     "voices.eyebrow": "ลูกค้า",
@@ -1687,10 +1674,10 @@ form {
     "faq.title": "คำถามที่ทุกคนถาม",
     "faq1.q": "เว็บไซต์ใช้เวลานานแค่ไหน?",
     "faq1.a": "โดยทั่วไปประมาณสองสัปดาห์นับจากที่คุณส่งเนื้อหาและรูป เว็บหน้าเดียวง่าย ๆ อาจขึ้นได้ใน 3–4 วัน ถ้ามีเดดไลน์ที่แน่นอน บอกได้ในการคุยครั้งแรก แล้วผมจะบอกตรง ๆ ว่าเป็นไปได้ไหม",
-    "faq2.q": "ค่าดูแลรายเดือน ฿899 ครอบคลุมอะไรบ้าง?",
-    "faq2.a": "โฮสติ้ง, SSL, สำรองข้อมูลรายวัน, อัปเดตซอฟต์แวร์และความปลอดภัย, เฝ้าระวังการทำงาน และแก้ไขเนื้อหาเล็กน้อยได้สูงสุดหนึ่งชั่วโมงต่อเดือน — ราคาใหม่ รูปใหม่ เวลาเปิด-ปิด เป็นทางเลือก ยกเลิกเดือนไหนก็ได้ แล้วผมจะส่งไฟล์ให้",
+    "faq2.q": "ค่าดูแลรายเดือนครอบคลุมอะไรบ้าง?",
+    "faq2.a": "โฮสติ้ง, SSL, สำรองข้อมูลรายวัน, อัปเดตซอฟต์แวร์และความปลอดภัย, เฝ้าระวังการทำงาน และแก้ไขเนื้อหาเล็กน้อยได้สูงสุดหนึ่งชั่วโมงต่อเดือน — ราคาใหม่ รูปใหม่ เวลาเปิด-ปิด ยกเลิกเดือนไหนก็ได้ แล้วผมจะส่งไฟล์ให้",
     "faq3.q": "ผมต้องมีชื่อโดเมนของตัวเองไหม?",
-    "faq3.a": "ใช่ และคุณควรเป็นเจ้าของเองแทนที่จะให้เอเจนซีถือไว้ ผมจะจดทะเบียนในชื่อคุณและคิดตามราคาจริง — โดยปกติราว ฿400–600 ต่อปี บัญชีเป็นของคุณ",
+    "faq3.a": "ใช่ และคุณควรเป็นเจ้าของเองแทนที่จะให้เอเจนซีถือไว้ ผมจะจดทะเบียนในชื่อคุณและคิดตามราคาจริง บัญชีเป็นของคุณ",
     "faq4.q": "ใครเป็นเจ้าของเว็บและเนื้อหา?",
     "faq4.a": "คุณเป็นเจ้าของทั้งหมด ทั้งโค้ด ดีไซน์ โลโก้ โดเมน และล็อกอิน ไม่มีค่าลิขสิทธิ์ให้ต่ออายุ ไม่มีการผูกมัด ถ้าคุณย้ายไปหานักพัฒนาคนอื่น ทุกอย่างโอนให้หมด",
     "faq5.q": "รับงานธุรกิจจากที่ไหนก็ได้ไหม?",
@@ -1825,21 +1812,25 @@ form {
   }
 
   /* ── pricing currency switch ───────────────────── */
-  const curOpts = $$(".cur-opt");
-  const curEls  = $$("[data-thb]");
-  if (curOpts.length && curEls.length) {
-    const setCur = cur => {
-      curEls.forEach(el => { el.textContent = el.dataset[cur]; });
-      curOpts.forEach(b => {
-        const on = b.dataset.cur === cur;
-        b.classList.toggle("is-active", on);
-        b.setAttribute("aria-pressed", String(on));
-      });
-      store.set("zz-cur", cur);
-    };
-    curOpts.forEach(b => b.addEventListener("click", () => setCur(b.dataset.cur)));
-    const saved = store.get("zz-cur");
-    if (saved === "usd") setCur("usd");
+  const curEls = $$("[data-thb]");
+  if (curEls.length) {
+    if (document.documentElement.lang === "th") {
+      /* Thai page: baht only, no switch */
+      curEls.forEach(el => { el.textContent = el.dataset.thb; });
+    } else {
+      const curOpts = $$(".cur-opt");
+      const setCur = cur => {
+        curEls.forEach(el => { el.textContent = el.dataset[cur]; });
+        curOpts.forEach(b => {
+          const on = b.dataset.cur === cur;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-pressed", String(on));
+        });
+        store.set("zz-cur", cur);
+      };
+      curOpts.forEach(b => b.addEventListener("click", () => setCur(b.dataset.cur)));
+      if (store.get("zz-cur") === "zar") setCur("zar");
+    }
   }
 
   /* ── pricing → prefill service ─────────────────── */
