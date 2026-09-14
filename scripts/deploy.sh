@@ -35,6 +35,7 @@ HTML_FILES=(
   th/index.html
   search/index.html
   th/search/index.html
+  style-sheet/index.html
   services/hosting/index.html
   services/local-seo/index.html
   services/logo-brand/index.html

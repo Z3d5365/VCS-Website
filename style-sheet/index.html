@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style sheet — Vibe Crafted</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0c0c0c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fbfaf8" media="(prefers-color-scheme: light)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230C0C0C'/><polygon fill='%23fff' points='8,10 31.5,10 50,68.5 68.5,10 92,10 50,92'/><polyline fill='none' stroke='%230C0C0C' stroke-width='5.5' points='16.5,49 33,38.5 50,55.5 67,39 83.5,50.5'/></svg>">
+<script>(()=>{try{var t=localStorage.getItem("zz-theme");document.documentElement.dataset.theme=t||"light";}catch{document.documentElement.dataset.theme="light";}})();</script>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════════════
+   Internal style sheet / design reference. Unlisted: nothing links here.
+
+   The tokens below are MIRRORED from the :root blocks in /index.html, which
+   is the source of truth for the homepage system. If you change a token
+   there, change it here too — the swatches read their values back out of the
+   live CSS at runtime, so anything stale shows up as a wrong colour, not a
+   wrong label.
+
+   /assets/service.css holds a separate, violet-accented variant used by the
+   subpages (/services/…, /search/). See the "Two systems" note at the end.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg:            #fbfaf8;
+  --bg-sunk:       #f0f0f0;
+  --surface:       #ffffff;
+  --surface-2:     #f7f7f7;
+  --text:          #0c0c0c;
+  --text-soft:     #404040;
+  --text-muted:    #6b6b6b;
+  --line:          #e5e5e5;
+  --line-strong:   #d4d4d4;
+
+  --violet:        #4f46e5;
+  --violet-soft:   #eef0ff;
+  --mint:          #14b8a6;
+  --amber:         #f4820b;
+
+  --accent:        #0c0c0c;
+  --accent-ink:    #ffffff;
+  --grad: linear-gradient(100deg, #0c0c0c 0%, #333333 100%);
+  --band: linear-gradient(120deg, #0c0c0c 0%, #262626 100%);
+  --glow: radial-gradient(60% 60% at 50% 40%, rgba(12,12,12,.05), transparent 70%);
+
+  --shadow-sm: 0 1px 2px rgba(19,17,24,.06), 0 2px 8px rgba(19,17,24,.04);
+  --shadow-md: 0 2px 4px rgba(19,17,24,.05), 0 12px 32px -8px rgba(19,17,24,.14);
+  --shadow-lg: 0 4px 8px rgba(19,17,24,.06), 0 32px 64px -16px rgba(19,17,24,.22);
+
+  --r-sm: 8px;
+  --r:    16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+
+  --pad: clamp(1.25rem, 5vw, 2.5rem);
+  --shell: 1180px;
+  --section: clamp(4.5rem, 11vh, 8.5rem);
+
+  --sans: "Inter", "Inter var", ui-sans-serif, system-ui, -apple-system,
+          "Segoe UI Variable Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+
+  --ease: cubic-bezier(.22,1,.36,1);
+  --ease-io: cubic-bezier(.65,0,.35,1);
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg:            #0c0c0c;
+  --bg-sunk:       #050505;
+  --surface:       #161616;
+  --surface-2:     #1f1f1f;
+  --text:          #f0f0f0;
+  --text-soft:     #d4d4d4;
+  --text-muted:    #a3a3a3;
+  --line:          #262626;
+  --line-strong:   #404040;
+
+  --violet:        #6366f1;
+  --violet-soft:   #1a1a2e;
+  --mint:          #2dd4bf;
+  --amber:         #ffa63d;
+
+  --accent:        #f0f0f0;
+  --accent-ink:    #0c0c0c;
+  --grad: linear-gradient(100deg, #f0f0f0 0%, #a3a3a3 100%);
+  --glow: radial-gradient(60% 60% at 50% 40%, rgba(240,240,240,.06), transparent 70%);
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.5);
+  --shadow-md: 0 2px 4px rgba(0,0,0,.4), 0 16px 40px -12px rgba(0,0,0,.7);
+  --shadow-lg: 0 4px 8px rgba(0,0,0,.4), 0 40px 80px -20px rgba(0,0,0,.85);
+
+  color-scheme: dark;
+}
+
+/* ── page chrome ─────────────────────────────────── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+code, .mono { font-family: var(--mono); font-size: .8125rem; }
+
+.shell { max-width: var(--shell); margin-inline: auto; padding-inline: var(--pad); }
+
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar .shell { display: flex; align-items: center; gap: 1rem; height: 4rem; }
+.topbar strong { font-family: var(--display); letter-spacing: -.02em; margin-inline-end: auto; }
+.topbar .note { font-size: .78rem; color: var(--text-muted); }
+
+.lede { max-width: 46rem; padding-block: 2.5rem 1rem; }
+.lede h1 { font-family: var(--display); font-size: clamp(2rem, 1.4rem + 2.4vw, 2.9rem); letter-spacing: -.03em; line-height: 1.08; }
+.lede p { color: var(--text-soft); margin-top: .9rem; }
+.lede .warn {
+  margin-top: 1.2rem; padding: .85rem 1rem; font-size: .875rem;
+  border-radius: var(--r-sm); border: 1px solid color-mix(in oklab, var(--amber) 40%, transparent);
+  background: color-mix(in oklab, var(--amber) 12%, transparent); color: var(--text-soft);
+}
+
+section.sec { padding-block: 2.2rem; border-top: 1px solid var(--line); }
+section.sec > h2 {
+  font-family: var(--display); font-size: 1.25rem; letter-spacing: -.02em;
+  display: flex; align-items: baseline; gap: .7rem; flex-wrap: wrap;
+}
+section.sec > h2 .hint { font-family: var(--sans); font-size: .8125rem; font-weight: 400; color: var(--text-muted); letter-spacing: 0; }
+section.sec > p { color: var(--text-soft); font-size: .92rem; margin-top: .5rem; max-width: 46rem; }
+
+.grid { display: grid; gap: .9rem; margin-top: 1.4rem; }
+.g-sw   { grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr)); }
+.g-wide { grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr)); }
+
+/* ── swatches ────────────────────────────────────── */
+.sw { border: 1px solid var(--line); border-radius: var(--r-sm); overflow: hidden; background: var(--surface); }
+.sw .chip { height: 4.2rem; border-bottom: 1px solid var(--line); }
+.sw .meta { padding: .55rem .7rem .65rem; }
+.sw .name { font-family: var(--mono); font-size: .78rem; }
+.sw .val  { font-family: var(--mono); font-size: .7rem; color: var(--text-muted); margin-top: .15rem; word-break: break-all; }
+.sw .desc { font-size: .76rem; color: var(--text-soft); margin-top: .3rem; }
+
+/* ── spec rows ───────────────────────────────────── */
+.spec { display: grid; gap: .5rem; margin-top: 1.3rem; }
+.spec .row {
+  display: grid; grid-template-columns: minmax(8rem, 12rem) 1fr; gap: 1rem; align-items: center;
+  padding: .75rem .9rem; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--surface);
+}
+.spec .row .k { font-family: var(--mono); font-size: .78rem; }
+.spec .row .v { font-size: .875rem; color: var(--text-soft); word-break: break-word; }
+@media (max-width: 620px) { .spec .row { grid-template-columns: 1fr; gap: .3rem; } }
+
+.demo { border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); padding: 1.3rem; }
+.demo + .demo { margin-top: .9rem; }
+.demo .cap { font-family: var(--mono); font-size: .72rem; color: var(--text-muted); display: block; margin-bottom: .9rem; }
+.row-wrap { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; }
+
+/* ── the real components, copied from the live pages ── */
+.btn {
+  --btn-bg: var(--text); --btn-fg: var(--bg);
+  display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+  padding: .8rem 1.35rem; border: 1px solid transparent; border-radius: 100px;
+  background: var(--btn-bg); color: var(--btn-fg);
+  font: inherit; font-size: .9375rem; font-weight: 580; letter-spacing: -.01em;
+  cursor: pointer; white-space: nowrap; text-decoration: none;
+  transition: translate .3s var(--ease), box-shadow .3s var(--ease);
+}
+.btn:hover { translate: 0 -2px; box-shadow: var(--shadow-md); }
+.btn--primary { --btn-bg: var(--accent); --btn-fg: var(--accent-ink); }
+.btn--ghost { --btn-bg: transparent; --btn-fg: var(--text); border-color: var(--line-strong); }
+.btn--sm { padding: .55rem 1rem; font-size: .875rem; }
+.btn svg { width: 1em; height: 1em; flex: none; }
+
+.icon-btn {
+  width: 2.375rem; height: 2.375rem; display: grid; place-items: center;
+  border: 1px solid var(--line); border-radius: 100px; background: var(--surface);
+  cursor: pointer; color: var(--text);
+}
+.icon-btn svg { width: 1.05rem; height: 1.05rem; }
+
+.pill { display: inline-flex; gap: .15rem; padding: .2rem; border: 1px solid var(--line); border-radius: 100px; background: var(--surface-2); }
+.pill span { font-size: .8rem; font-weight: 600; color: var(--text-muted); padding: .35rem .6rem; border-radius: 100px; }
+.pill .on { background: var(--surface); color: var(--text); box-shadow: var(--shadow-sm); }
+
+.eyebrow { font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); }
+.tag { display: inline-block; font-size: .78rem; font-weight: 560; padding: .3rem .7rem; border-radius: 100px; border: 1px solid var(--line); background: var(--surface-2); color: var(--text-soft); }
+
+.ico { width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border-radius: 12px; background: var(--violet-soft); color: var(--violet); border: 1px solid color-mix(in oklab, var(--violet) 18%, transparent); }
+.ico svg { width: 1.35rem; height: 1.35rem; }
+
+.feat { list-style: none; display: grid; gap: .6rem; }
+.feat li { display: grid; grid-template-columns: 1.2rem 1fr; gap: .6rem; color: var(--text-soft); font-size: .92rem; }
+.feat svg { width: 1.2rem; height: 1.2rem; color: var(--mint); margin-top: .25rem; }
+
+.field { display: grid; gap: .4rem; }
+.field + .field { margin-top: .9rem; }
+.field label { font-size: .8125rem; font-weight: 600; color: var(--text-soft); }
+.field :is(input, textarea, select) {
+  font: inherit; padding: .75rem .9rem; border: 1px solid var(--line-strong); border-radius: var(--r-sm);
+  background: var(--bg); color: var(--text); font-size: .9375rem;
+}
+.field :is(input, textarea, select):focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent); }
+
+details.faq { border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--surface); padding: .9rem 1.1rem; }
+details.faq summary { font-weight: 600; cursor: pointer; }
+details.faq p { color: var(--text-soft); font-size: .9rem; margin-top: .5rem; }
+
+.band { background: var(--band); color: #fff; border-radius: var(--r-xl); padding: 2rem; text-align: center; }
+.band h3 { font-family: var(--display); font-size: 1.4rem; letter-spacing: -.02em; }
+.band p { opacity: .9; font-size: .92rem; margin-block: .5rem 1.1rem; }
+.band .btn { --btn-bg: #fff; --btn-fg: #0c0c0c; }
+
+.stats { display: flex; flex-wrap: wrap; gap: 2rem; }
+.stat b { font-family: var(--display); font-size: 1.9rem; letter-spacing: -.03em; display: block; }
+.stat span { font-size: .82rem; color: var(--text-muted); }
+
+.type-row { padding-block: .55rem; border-bottom: 1px dashed var(--line); }
+.type-row:last-child { border-bottom: 0; }
+.type-row .lbl { font-family: var(--mono); font-size: .7rem; color: var(--text-muted); display: block; margin-bottom: .15rem; }
+
+.radius-demo { display: grid; place-items: center; height: 4.5rem; background: var(--surface-2); border: 1px solid var(--line-strong); color: var(--text-muted); font-family: var(--mono); font-size: .72rem; }
+.shadow-demo { height: 4.5rem; border-radius: var(--r-sm); background: var(--surface); display: grid; place-items: center; font-family: var(--mono); font-size: .72rem; color: var(--text-muted); margin: .9rem; }
+
+footer.foot { border-top: 1px solid var(--line); padding-block: 2rem 3rem; color: var(--text-muted); font-size: .82rem; }
+footer.foot a { color: var(--text-soft); }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; } }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="shell">
+    <strong>Style sheet</strong>
+    <span class="note">Internal · unlisted</span>
+    <button class="icon-btn" id="theme" type="button" aria-label="Switch colour theme" title="Toggle light / dark">
+      <svg id="ico-theme" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+    </button>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="lede">
+    <h1>The Vibe Crafted design system</h1>
+    <p>Every colour, size, radius and component the site is built from, on one page. Flip the theme in the top right to check both. Values under each swatch are read out of the live CSS when the page loads, so what you see is what the browser is actually using.</p>
+    <div class="warn">
+      <strong>Unlisted on purpose.</strong> Nothing on the site links here, it is <code>noindex,nofollow</code>, and it is left out of the search index and the sitemap. It is reachable only by typing <code>/style-sheet/</code>. Treat it as an internal reference, not a public page.
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+
+  <!-- ── COLOUR ──────────────────────────────────── -->
+  <section class="sec">
+    <h2>Surfaces &amp; text <span class="hint">the neutral ramp, light → dark reversed by the theme</span></h2>
+    <div class="grid g-sw" id="sw-neutral"></div>
+  </section>
+
+  <section class="sec">
+    <h2>Accent &amp; semantic <span class="hint">accent is near-black in light, near-white in dark — violet and mint are secondary</span></h2>
+    <div class="grid g-sw" id="sw-accent"></div>
+  </section>
+
+  <section class="sec">
+    <h2>Gradients</h2>
+    <p><code>--band</code> is always dark and always carries white text, so it stays legible in either theme. <code>--grad</code> flips with the theme and is used for text clipping and small marks.</p>
+    <div class="grid g-sw" id="sw-grad"></div>
+  </section>
+
+  <!-- ── TYPE ────────────────────────────────────── -->
+  <section class="sec">
+    <h2>Typography <span class="hint">no web fonts — system stacks only, for speed</span></h2>
+    <div class="spec" id="spec-fonts"></div>
+
+    <div class="demo" style="margin-top:1.3rem">
+      <span class="cap">Scale — headings use clamp(), so drag the window to see them respond</span>
+      <div class="type-row"><span class="lbl">h1 · var(--display) · clamp(2.4rem, 1.6rem + 3.4vw, 4.4rem) · 720</span><div style="font-family:var(--display);font-size:clamp(2.4rem,1.6rem + 3.4vw,4.4rem);line-height:1.04;letter-spacing:-.035em;font-weight:720">Small studio. Serious websites.</div></div>
+      <div class="type-row"><span class="lbl">h2 · clamp(2rem, 1.35rem + 2.6vw, 3.1rem) · 680</span><div style="font-family:var(--display);font-size:clamp(2rem,1.35rem + 2.6vw,3.1rem);line-height:1.1;letter-spacing:-.03em;font-weight:680">Plain numbers, no packages to decode</div></div>
+      <div class="type-row"><span class="lbl">h3 · 1.0625rem · 620</span><div style="font-family:var(--display);font-size:1.0625rem;font-weight:620;letter-spacing:-.01em">Hosting &amp; maintenance</div></div>
+      <div class="type-row"><span class="lbl">body · 1rem · 400 · line-height 1.65</span><div style="max-width:42rem;line-height:1.65">Fast, hand-built websites, logos and hosting for small businesses. Launch in two weeks, own everything, cancel any time.</div></div>
+      <div class="type-row"><span class="lbl">small / lede · .9375rem · var(--text-soft)</span><div style="font-size:.9375rem;color:var(--text-soft);max-width:42rem">A sentence or two is enough to start. You'll get a real reply within 24 hours, with a price and a date.</div></div>
+      <div class="type-row"><span class="lbl">.eyebrow · .78rem · 600 · .1em tracking · uppercase</span><div><span class="eyebrow">Pricing</span></div></div>
+      <div class="type-row"><span class="lbl">code / .mono · var(--mono) · .8125rem</span><div><code>aws s3 cp index.html s3://websites.vibecraftedsoftware.com/</code></div></div>
+    </div>
+  </section>
+
+  <!-- ── SHAPE ───────────────────────────────────── -->
+  <section class="sec">
+    <h2>Corner radius</h2>
+    <div class="grid g-sw" id="sw-radius"></div>
+  </section>
+
+  <section class="sec">
+    <h2>Elevation <span class="hint">three steps — cards rest on sm, hover lifts to md, overlays use lg</span></h2>
+    <div class="grid g-wide" id="sw-shadow"></div>
+  </section>
+
+  <section class="sec">
+    <h2>Layout &amp; motion</h2>
+    <div class="spec" id="spec-layout"></div>
+  </section>
+
+  <!-- ── COMPONENTS ──────────────────────────────── -->
+  <section class="sec">
+    <h2>Buttons</h2>
+    <div class="demo">
+      <span class="cap">.btn · .btn--primary · .btn--ghost · .btn--sm</span>
+      <div class="row-wrap">
+        <span class="btn btn--primary">Start a project
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+        <span class="btn btn--ghost">Enquire</span>
+        <span class="btn btn--primary btn--sm">Small</span>
+        <span class="btn btn--ghost btn--sm">Small ghost</span>
+        <button class="icon-btn" type="button" aria-label="Example icon button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        </button>
+        <span class="pill"><span class="on">EN</span><span>ไทย</span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Cards, icons and lists</h2>
+    <div class="grid g-wide">
+      <div class="demo">
+        <span class="cap">.ico + card body</span>
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg></span>
+        <h3 style="font-family:var(--display);font-size:1.0625rem;margin-top:.9rem">Web design</h3>
+        <p style="color:var(--text-soft);font-size:.92rem;margin-top:.3rem">A complete site for your business, built to be found.</p>
+        <div class="row-wrap" style="margin-top:.9rem"><span class="tag">Mobile-first</span><span class="tag">SEO basics</span><span class="tag">Analytics</span></div>
+      </div>
+      <div class="demo">
+        <span class="cap">.feat — mint ticks</span>
+        <ul class="feat">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> <span>Up to 6 pages, mobile-first</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> <span>Enquiry form, maps, socials</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> <span>Two rounds of revisions</span></li>
+        </ul>
+      </div>
+      <div class="demo">
+        <span class="cap">.stats</span>
+        <div class="stats">
+          <div class="stat"><b>&lt;2s</b><span>Typical page load on 4G</span></div>
+          <div class="stat"><b>2 wks</b><span>Average build time</span></div>
+          <div class="stat"><b>24h</b><span>Reply to every enquiry</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Form fields</h2>
+    <div class="demo" style="max-width:34rem">
+      <span class="cap">.field — inputs go to 16px under 640px so iOS doesn't zoom on focus</span>
+      <div class="field"><label for="d-name">Your name</label><input id="d-name" type="text" placeholder="Somchai P."></div>
+      <div class="field"><label for="d-svc">What do you need?</label><select id="d-svc"><option>Website</option><option>Hosting &amp; maintenance</option><option>Logo &amp; brand mark</option></select></div>
+      <div class="field"><label for="d-msg">A few words about the project</label><textarea id="d-msg" rows="3" placeholder="We're a café with a Facebook page but no website…"></textarea></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Disclosure &amp; band</h2>
+    <details class="faq"><summary>What does the monthly hosting actually cover?</summary><p>Hosting, SSL, daily backups, security updates, uptime monitoring and up to an hour of small content changes each month.</p></details>
+    <div class="band" style="margin-top:1.2rem">
+      <h3>Still running on a Facebook page?</h3>
+      <p>Twenty minutes on the phone and you'll have a fixed price and a launch date.</p>
+      <span class="btn">Call +66 83 9696 555</span>
+    </div>
+  </section>
+
+  <!-- ── NOTE ────────────────────────────────────── -->
+  <section class="sec">
+    <h2>Two systems, one site <span class="hint">worth knowing before you edit</span></h2>
+    <p>The homepage carries its styles <strong>inline in <code>index.html</code></strong> and uses a near-black accent. The subpages — <code>/services/…</code> and <code>/search/</code> — share <strong><code>/assets/service.css</code></strong>, which defines its own tokens with a <em>violet</em> accent (<code>#6d5efc</code>, <code>#8b7dff</code> dark) and a violet→mint gradient. The two are deliberately close but not identical, so a token changed in one place does not follow into the other.</p>
+    <div class="spec">
+      <div class="row"><span class="k">index.html</span><span class="v">Homepage tokens + all homepage components. Source of truth for this page — the block at the top of this file mirrors it.</span></div>
+      <div class="row"><span class="k">assets/service.css</span><span class="v">Subpage + search tokens and components. Violet accent variant.</span></div>
+      <div class="row"><span class="k">portal/index.html</span><span class="v">Client portal, inline, its own smaller token set.</span></div>
+      <div class="row"><span class="k">build/build-th.js</span><span class="v">Bakes the Thai page from index.html — never hand-edit th/index.html.</span></div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="foot">
+  <div class="shell">
+    Internal reference · not linked, not indexed, not in the sitemap ·
+    <a href="/">back to the site</a>
+  </div>
+</footer>
+
+<script>
+(() => {
+  "use strict";
+  const $ = s => document.querySelector(s);
+  const store = { get(k){ try { return localStorage.getItem(k); } catch { return null; } },
+                  set(k,v){ try { localStorage.setItem(k,v); } catch {} } };
+  const root = document.documentElement;
+
+  /* theme toggle */
+  const SUN  = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/>';
+  const MOON = '<path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/>';
+  const paintIcon = () => { $("#ico-theme").innerHTML = root.dataset.theme === "dark" ? SUN : MOON; };
+  $("#theme").addEventListener("click", () => {
+    root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+    store.set("zz-theme", root.dataset.theme);
+    paintIcon(); paint();
+  });
+  paintIcon();
+
+  /* Read every value back out of the live CSS, so a stale mirror of the
+     tokens shows up as a wrong swatch rather than a wrong label. */
+  const css = name => getComputedStyle(root).getPropertyValue(name).trim();
+
+  const NEUTRAL = [
+    ["--bg", "Page background"],
+    ["--bg-sunk", "Recessed bands and the footer"],
+    ["--surface", "Cards, inputs, the header when stuck"],
+    ["--surface-2", "Hover fills and inset chips"],
+    ["--text", "Body copy and headings"],
+    ["--text-soft", "Secondary copy, lede paragraphs"],
+    ["--text-muted", "Captions, labels, metadata"],
+    ["--line", "Default hairline border"],
+    ["--line-strong", "Input borders, ghost buttons"],
+  ];
+  const ACCENT = [
+    ["--accent", "Primary buttons and focus rings"],
+    ["--accent-ink", "Text on top of --accent"],
+    ["--violet", "Icon tiles, secondary accent"],
+    ["--violet-soft", "Icon tile background"],
+    ["--mint", "Success ticks, search highlights"],
+    ["--amber", "Warnings, form validation"],
+  ];
+  const GRADS = [
+    ["--grad", "Flips with the theme — text clipping, marks"],
+    ["--band", "Always dark, always white text — the CTA band"],
+    ["--glow", "Soft radial wash behind the hero"],
+  ];
+  const RADII  = [["--r-sm","Inputs, small chips"],["--r","Cards, the header"],["--r-lg","Large cards, forms"],["--r-xl","The CTA band"]];
+  const SHADOW = [["--shadow-sm","Resting cards"],["--shadow-md","Hover lift"],["--shadow-lg","Overlays, the mobile nav"]];
+  const FONTS  = [["--sans","Body and UI"],["--display","Headings and the wordmark"],["--mono","Code and token names"]];
+  const LAYOUT = [["--shell","Max content width"],["--pad","Side gutter"],["--section","Vertical rhythm between sections"],["--ease","Default easing — springy, for entrances"],["--ease-io","Symmetrical easing — for toggles"]];
+
+  const swatch = (name, desc, style) =>
+    `<div class="sw"><div class="chip" style="${style}"></div><div class="meta">
+       <div class="name">${name}</div><div class="val">${css(name) || "—"}</div><div class="desc">${desc}</div>
+     </div></div>`;
+
+  function paint() {
+    $("#sw-neutral").innerHTML = NEUTRAL.map(([n, d]) => swatch(n, d, `background:var(${n})`)).join("");
+    $("#sw-accent").innerHTML  = ACCENT.map(([n, d]) => swatch(n, d, `background:var(${n})`)).join("");
+    $("#sw-grad").innerHTML    = GRADS.map(([n, d]) => swatch(n, d, `background:var(${n})`)).join("");
+
+    $("#sw-radius").innerHTML = RADII.map(([n, d]) =>
+      `<div class="sw"><div class="chip" style="padding:.55rem">
+         <div class="radius-demo" style="border-radius:var(${n});width:100%;height:100%">${css(n)}</div>
+       </div><div class="meta"><div class="name">${n}</div><div class="val">${css(n)}</div><div class="desc">${d}</div></div></div>`).join("");
+
+    $("#sw-shadow").innerHTML = SHADOW.map(([n, d]) =>
+      `<div class="sw"><div class="chip" style="height:auto;background:var(--bg-sunk)">
+         <div class="shadow-demo" style="box-shadow:var(${n})">${n}</div>
+       </div><div class="meta"><div class="name">${n}</div><div class="val">${css(n)}</div><div class="desc">${d}</div></div></div>`).join("");
+
+    $("#spec-fonts").innerHTML = FONTS.map(([n, d]) =>
+      `<div class="row"><span class="k">${n}</span><span class="v"><span style="font-family:var(${n})">${d} — Aa Bb Cc 0123</span><br><span class="mono" style="color:var(--text-muted)">${css(n)}</span></span></div>`).join("");
+
+    $("#spec-layout").innerHTML = LAYOUT.map(([n, d]) =>
+      `<div class="row"><span class="k">${n}</span><span class="v">${d} <span class="mono" style="color:var(--text-muted)">· ${css(n)}</span></span></div>`).join("");
+  }
+  paint();
+})();
+</script>
+</body>
+</html>

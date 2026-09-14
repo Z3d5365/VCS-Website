@@ -99,5 +99,10 @@ link rewrites). **Never hand-edit generated locale files** — edit the source a
 - **Search:** Pagefind. `/search/` + `/th/search/` (both `noindex`) render results via
   `assets/search.js`; only `<main data-pagefind-body>` is indexed, so nav/footer chrome stays out.
   The `/pagefind/` bundle is a build artifact — gitignored, rebuilt on every deploy.
+- **Style sheet:** `/style-sheet/` is an internal design reference (tokens, type scale, radii,
+  shadows, components, light/dark). Deliberately **unlisted** — nothing links to it, it is
+  `noindex,nofollow`, and it is kept out of the search index, the sitemap and robots.txt (listing
+  it there would advertise the URL). Do not add a link to it. Its `:root` block mirrors
+  `index.html` — change a token in one and change it in the other.
 - **Brand:** name `ZZDigital` in titles/meta/schema; visible nav wordmark `ZZ Digital`
 - **More detail:** `docs/SEO-PLAYBOOK.md` (SEO plan + audit)
