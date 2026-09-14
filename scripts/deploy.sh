@@ -68,6 +68,7 @@ for f in "${HTML_FILES[@]}"; do
 done
 aws s3 cp assets/service.css "s3://$BUCKET/assets/service.css" --cache-control "$NOCACHE" --content-type "text/css; charset=utf-8"
 aws s3 cp assets/search.js   "s3://$BUCKET/assets/search.js"   --cache-control "$NOCACHE" --content-type "text/javascript; charset=utf-8"
+aws s3 cp assets/site-nav.js "s3://$BUCKET/assets/site-nav.js" --cache-control "$NOCACHE" --content-type "text/javascript; charset=utf-8"
 aws s3 cp robots.txt         "s3://$BUCKET/robots.txt"         --cache-control "$NOCACHE" --content-type "text/plain; charset=utf-8"
 aws s3 cp sitemap.xml        "s3://$BUCKET/sitemap.xml"        --cache-control "$NOCACHE" --content-type "application/xml"
 
