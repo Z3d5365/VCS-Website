@@ -53,7 +53,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.65;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
 .shell{max-width:var(--shell);margin-inline:auto;padding-inline:var(--pad)}
 .skip{position:absolute;left:50%;top:0;translate:-50% -140%;z-index:200;background:var(--text);color:var(--bg);padding:.7rem 1.2rem;border-radius:0 0 12px 12px;font-size:.875rem;font-weight:600;text-decoration:none;transition:translate .25s var(--ease)}
@@ -80,6 +80,7 @@ a{color:inherit}
 .nav-login:hover{border-color:var(--violet);color:var(--violet)!important;background:transparent!important}
 .nav-search{display:none}
 
+.lang-switch--nav{display:none}
 .lang-switch{display:inline-flex;gap:.15rem;padding:.2rem;border:1px solid var(--line);border-radius:100px;background:var(--surface-2)}
 .lang-opt{font:inherit;font-size:.8rem;font-weight:600;line-height:1;color:var(--text-muted);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;padding:.35rem .6rem;border:0;border-radius:100px;background:transparent;transition:color .2s,background .2s,box-shadow .2s}
 .lang-opt:hover{color:var(--text)}
@@ -123,7 +124,7 @@ section.block{padding-block:2.2rem}
 section.block:nth-of-type(even){background:var(--bg-sunk);border-block:1px solid var(--line)}
 h2{font-size:clamp(1.5rem,1.2rem+1.4vw,2rem);letter-spacing:-.01em;margin-bottom:.4rem}
 .block>.shell>p{color:var(--text-soft);max-width:46rem}
-.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin-top:1.3rem}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(15rem,100%),1fr));margin-top:1.3rem}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.4rem;box-shadow:var(--shadow-sm)}
 .card h3{font-size:1.02rem;margin-bottom:.35rem}
 .card p{font-size:.92rem;color:var(--text-soft)}
@@ -193,6 +194,39 @@ footer a{color:var(--text-soft)}
   .search-form input{font-size:1rem;padding:.85rem 1rem .85rem 2.8rem}
   .sr{padding:1rem 2.2rem 1rem 1.05rem;border-radius:var(--r-sm)}
   .sr__go{top:.95rem;right:.85rem}
+}
+
+@media (max-width:640px){
+  /* 38px was under every platform's minimum touch target. */
+  .icon-btn{width:2.625rem;height:2.625rem}
+  .icon-btn svg{width:1.15rem;height:1.15rem}
+  section.block{padding-block:1.7rem}
+  .hero{padding-block:1.8rem 1.2rem}
+  .lede{font-size:1.02rem}
+  .cta{margin-block:1.8rem;padding:1.8rem 1.2rem}
+  .cta-row{gap:.6rem}
+  .cta-row .btn{flex:1 1 100%;justify-content:center}
+  /* .cta is a text-align:center block, not flex — width, not flex-basis. */
+  .cta .btn{width:100%;max-width:22rem;justify-content:center}
+  .card{padding:1.15rem}
+  .faq details{padding:.85rem 1rem}
+  /* Long words — URLs, emails, Thai compounds — must not widen the page. */
+  .lede,.card p,.prose p,.faq p,.block>.shell>p{overflow-wrap:break-word}
+}
+
+@media (max-width:560px){
+  /* Brand + language + theme + burger will not fit side by side, so the
+     language pill moves into the burger menu and .nav's offset follows. */
+  .bar{gap:.5rem;height:4rem}
+  .bar>.lang-switch{display:none}
+  .brand{font-size:.95rem;gap:.45rem}
+  .mark{width:1.75rem;height:1.75rem}
+  .mark svg{width:1.7rem;height:1.7rem}
+  .nav{inset:4rem 0 auto}
+  .lang-switch--nav{display:inline-flex;align-self:flex-start;margin-block-start:.75rem}
+  .nav .lang-opt{padding:.45rem .85rem;font-size:.875rem;border-radius:100px}
+  .nav .lang-opt:hover{background:transparent}
+  .nav .lang-opt.is-active{background:var(--surface)}
 }
 
 @media (prefers-reduced-motion:reduce){.sr,.sr__go{transition:none}.sr:hover{transform:none}.sr:hover .sr__go{translate:none}}

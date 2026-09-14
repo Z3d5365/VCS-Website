@@ -26,7 +26,7 @@
   --line:#262626;--line-strong:#404040;--accent:#f0f0f0;--accent-ink:#0c0c0c;--grad:linear-gradient(120deg,#f0f0f0 0%,#a3a3a3 100%);--mint:#2dd4bf;--shadow-sm:0 1px 2px rgba(0,0,0,.5);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.55;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 h1,h2,h3{font-family:var(--display);letter-spacing:-.02em}
 a{color:inherit}
 .shell{max-width:70rem;margin-inline:auto;padding-inline:var(--pad)}
@@ -55,7 +55,7 @@ label{display:block;font-size:.82rem;font-weight:560;color:var(--text-soft);marg
 .msg-note{font-size:.85rem;padding:.6rem .8rem;border-radius:var(--r-sm);margin-top:.8rem}
 .msg-note.err{background:color-mix(in oklab,var(--red) 14%,transparent);color:var(--red)}
 .msg-note.ok{background:color-mix(in oklab,var(--mint) 16%,transparent);color:var(--mint)}
-.login-wrap{min-height:calc(100vh - 4rem);display:grid;place-items:center;padding:2rem 1rem}
+.login-wrap{min-height:calc(100vh - 4rem);min-height:calc(100svh - 4rem);display:grid;place-items:center;padding:2rem 1rem}
 .login-card{width:100%;max-width:24rem;padding:2rem}
 .login-card h1{font-size:1.4rem;letter-spacing:-.02em;margin-bottom:.3rem}
 .login-card p.sub{color:var(--text-muted);font-size:.9rem;margin-bottom:1.4rem}
@@ -63,7 +63,7 @@ label{display:block;font-size:.82rem;font-weight:560;color:var(--text-soft);marg
 .app-head{padding-block:1.6rem 1rem}
 .app-head h1{font-size:1.5rem;letter-spacing:-.02em}
 .app-head p{color:var(--text-muted);font-size:.92rem}
-.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr))}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(min(17rem,100%),1fr))}
 .proj{padding:1.3rem;cursor:pointer;transition:border-color .2s,transform .2s;position:relative}
 .ping{position:absolute;top:.85rem;right:.85rem;width:10px;height:10px;border-radius:50%;background:var(--red);animation:pingpulse 1.8s ease-out infinite}
 @keyframes pingpulse{0%{box-shadow:0 0 0 0 color-mix(in oklab,var(--red) 55%,transparent)}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
@@ -114,6 +114,20 @@ label{display:block;font-size:.82rem;font-weight:560;color:var(--text-soft);marg
 .easy p{color:var(--text-muted);font-size:.86rem;margin-top:.7rem}
 .tip{border-left:3px solid var(--mint);background:color-mix(in oklab,var(--mint) 8%,transparent);border-radius:var(--r-sm);padding:.65rem .8rem;margin:.7rem 0 0;color:var(--text-soft);font-size:.86rem}
 .tip b{color:var(--text)}
+@media (max-width:640px){
+  .topbar{gap:.55rem;height:3.6rem}
+  .btn{padding:.7rem 1.1rem}
+  .btn--sm{padding:.6rem .9rem;font-size:.86rem}
+  /* input + button side by side does not fit a phone; stack them. */
+  .urlrow{flex-wrap:wrap}
+  .urlrow input{flex:1 1 100%}
+  .urlrow .btn{flex:1 1 auto;justify-content:center}
+  .panel{padding:1.1rem}
+  .app-head{padding-block:1.2rem .8rem}
+  .easy{padding:1rem}
+  .msg{max-width:100%}
+  .theme-custom{grid-template-columns:1fr 1fr}
+}
 footer{border-top:1px solid var(--line);padding-block:1.4rem;color:var(--text-muted);font-size:.82rem;text-align:center;margin-top:2rem}
 </style>
 </head>

@@ -540,7 +540,7 @@ section[id] { padding-block: var(--section); }
 /* ── 7. Services ──────────────────────────────────── */
 .cards {
   display: grid; gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(15.5rem, 100%), 1fr));
 }
 .card {
   position: relative;
@@ -586,7 +586,7 @@ section[id] { padding-block: var(--section); }
 /* ── 8. Work ──────────────────────────────────────── */
 #work { background: var(--bg-sunk); border-block: 1px solid var(--line); }
 
-.work-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr)); }
+.work-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(24rem, 100%), 1fr)); }
 
 .project {
   display: flex; flex-direction: column;
@@ -653,7 +653,7 @@ section[id] { padding-block: var(--section); }
 /* ── 9. Process ───────────────────────────────────── */
 .steps {
   display: grid; gap: 1px;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
   background: var(--line);
   border: 1px solid var(--line); border-radius: var(--r-lg);
   overflow: hidden;
@@ -670,7 +670,7 @@ section[id] { padding-block: var(--section); }
 #pricing { background: var(--bg-sunk); border-block: 1px solid var(--line); }
 .price-grid {
   display: grid; gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(16.5rem, 100%), 1fr));
   align-items: stretch;
 }
 .plan {
@@ -753,7 +753,7 @@ section[id] { padding-block: var(--section); }
 }
 
 /* ── 11. Quote ────────────────────────────────────── */
-.quotes { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
+.quotes { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr)); }
 .quote {
   padding: 1.6rem;
   border: 1px solid var(--line); border-radius: var(--r-lg);
@@ -943,6 +943,56 @@ form {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
+/* ── 16b. Phones ──────────────────────────────────
+   Everything here is about a 360–430px screen: a bar that fits, targets a
+   thumb can actually hit, less dead vertical space, and nothing that can
+   push the page sideways. */
+.lang-switch--nav { display: none; }
+
+@media (max-width: 640px) {
+  /* 38px was under every platform's minimum touch target. */
+  .icon-btn { width: 2.625rem; height: 2.625rem; }
+  .icon-btn svg { width: 1.15rem; height: 1.15rem; }
+
+  /* Sections were spending ~144px of a ~650px screen on padding alone. */
+  section[id] { padding-block: clamp(3rem, 9vh, 4.25rem); }
+  .section-head { margin-block-end: 2rem; }
+  .section-head h2 { font-size: clamp(1.7rem, 1.15rem + 2.6vw, 2.2rem); }
+
+  h1 { font-size: clamp(2.05rem, 1.15rem + 4.6vw, 2.7rem); margin-block: 1rem .8rem; }
+  .lede { font-size: 1.02rem; }
+
+  /* Stacked full-width CTAs beat two half-width ones on a phone. */
+  .hero-cta { gap: .6rem; margin-block-start: 1.6rem; }
+  .hero-cta .btn { flex: 1 1 100%; justify-content: center; }
+
+  .stats { grid-template-columns: 1fr 1fr; margin-block-start: 2.5rem; }
+  .stat { padding: 1rem 1.05rem; }
+
+  .plan { padding: 1.4rem 1.25rem; }
+  .price-foot { font-size: .8125rem; }
+  .cta { padding: 2rem 1.25rem; border-radius: var(--r-lg); }
+
+  /* Long words — URLs, emails, Thai compounds — must never widen the page. */
+  .card p, .plan p, details p, .lede, .footer p { overflow-wrap: break-word; }
+}
+
+@media (max-width: 560px) {
+  /* Brand + language + theme + burger will not fit side by side. The
+     language pill moves into the menu; .nav's offset follows the bar. */
+  .bar { gap: .5rem; height: 4rem; }
+  .bar > .lang-switch { display: none; }
+  .brand { font-size: .95rem; gap: .45rem; }
+  .mark { width: 1.75rem; height: 1.75rem; }
+  .mark svg { width: 1.7rem; height: 1.7rem; }
+  .nav { inset: 4rem 0 auto; }
+
+  .lang-switch--nav { display: inline-flex; align-self: flex-start; margin-block-start: .75rem; }
+  .nav .lang-opt { padding: .45rem .85rem; font-size: .875rem; border-radius: 100px; }
+  .nav .lang-opt:hover { background: transparent; }
+  .nav .lang-opt.is-active { background: var(--surface); }
+}
+
 /* ── 17. Print ────────────────────────────────────── */
 @media print {
   .header, .progress, .cta, form, .device { display: none; }
@@ -977,6 +1027,11 @@ form {
       <a href="#faq" data-i18n="nav.faq">คำถามที่พบบ่อย</a>
       <a class="nav-search" href="/th/search/" data-i18n="nav.search">ค้นหา</a>
       <a class="nav-login" href="https://portal.zzdigitaldesign.com/portal/" data-i18n="nav.login">เข้าสู่ระบบ</a>
+
+      <div class="lang-switch lang-switch--nav" role="group" aria-label="Language / ภาษา">
+        <a class="lang-opt" href="/" data-lang="en" hreflang="en">EN</a>
+        <a class="lang-opt is-active" href="/th/" data-lang="th" hreflang="th" aria-current="true">ไทย</a>
+      </div>
     </nav>
 
     <div class="lang-switch" role="group" aria-label="Language / ภาษา">

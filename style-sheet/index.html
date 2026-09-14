@@ -103,7 +103,8 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
-code, .mono { font-family: var(--mono); font-size: .8125rem; }
+code, .mono { font-family: var(--mono); font-size: .8125rem; overflow-wrap: anywhere; }
+body { overflow-x: hidden; }
 
 .shell { max-width: var(--shell); margin-inline: auto; padding-inline: var(--pad); }
 
@@ -135,8 +136,8 @@ section.sec > h2 .hint { font-family: var(--sans); font-size: .8125rem; font-wei
 section.sec > p { color: var(--text-soft); font-size: .92rem; margin-top: .5rem; max-width: 46rem; }
 
 .grid { display: grid; gap: .9rem; margin-top: 1.4rem; }
-.g-sw   { grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr)); }
-.g-wide { grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr)); }
+.g-sw   { grid-template-columns: repeat(auto-fill, minmax(min(13.5rem, 100%), 1fr)); }
+.g-wide { grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr)); }
 
 /* ── swatches ────────────────────────────────────── */
 .sw { border: 1px solid var(--line); border-radius: var(--r-sm); overflow: hidden; background: var(--surface); }
@@ -229,6 +230,17 @@ details.faq p { color: var(--text-soft); font-size: .9rem; margin-top: .5rem; }
 
 footer.foot { border-top: 1px solid var(--line); padding-block: 2rem 3rem; color: var(--text-muted); font-size: .82rem; }
 footer.foot a { color: var(--text-soft); }
+
+@media (max-width: 640px) {
+  .topbar .shell { gap: .6rem; height: 3.5rem; }
+  .topbar strong { font-size: .95rem; }
+  .topbar .note { display: none; }
+  .icon-btn { width: 2.625rem; height: 2.625rem; }
+  .lede { padding-block: 1.8rem .8rem; }
+  section.sec { padding-block: 1.6rem; }
+  .demo { padding: 1rem; }
+  .type-row .lbl { overflow-wrap: anywhere; }
+}
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; } }
 </style>
