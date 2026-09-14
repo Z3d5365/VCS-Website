@@ -73,8 +73,8 @@ Object.keys(TH).forEach(key => {
 
 /* 6. Title + social meta */
 html = replaceOne(html, "Fast, Hand-Built Websites — Vibe Crafted", TH_TITLE, "title/og:title/twitter:title");
-html = replaceOne(html, "Fast, hand-built websites, logos and hosting for restaurants, resorts and local businesses. Launch in two weeks — from ฿2,999.", TH_DESC, "meta description");
-html = replaceOne(html, "Fast, hand-built websites, logos and hosting for restaurants, resorts and local businesses. From ฿2,999.", TH_OG_DESC, "og:description");
+html = replaceOne(html, "Fast, hand-built websites, logos and hosting for restaurants, resorts and local businesses. Launch in two weeks — from R1,499.", TH_DESC, "meta description");
+html = replaceOne(html, "Fast, hand-built websites, logos and hosting for restaurants, resorts and local businesses. From R1,499.", TH_OG_DESC, "og:description");
 html = replaceOne(html, "Fast, hand-built websites, logos and hosting. Launch in two weeks.", TH_TW_DESC, "twitter:description");
 
 /* 7. Canonical + og:url + locales → Thai URL */

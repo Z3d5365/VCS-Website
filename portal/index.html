@@ -106,6 +106,14 @@ label{display:block;font-size:.82rem;font-weight:560;color:var(--text-soft);marg
 .theme-ai summary::-webkit-details-marker{display:none}
 .theme-ai summary::before{content:"▸ ";color:var(--accent)}
 .theme-ai[open] summary::before{content:"▾ "}
+.easy{border:1px dashed var(--line-strong);border-radius:var(--r-lg);padding:1.1rem 1.2rem;margin-bottom:1.2rem;background:var(--surface-2)}
+.easy h2{font-size:.98rem;margin-bottom:.5rem}
+.easy ol{margin:.2rem 0 0 1.1rem;padding:0;color:var(--text-soft);font-size:.9rem}
+.easy li{margin-bottom:.35rem}
+.easy li:last-child{margin-bottom:0}
+.easy p{color:var(--text-muted);font-size:.86rem;margin-top:.7rem}
+.tip{border-left:3px solid var(--mint);background:color-mix(in oklab,var(--mint) 8%,transparent);border-radius:var(--r-sm);padding:.65rem .8rem;margin:.7rem 0 0;color:var(--text-soft);font-size:.86rem}
+.tip b{color:var(--text)}
 footer{border-top:1px solid var(--line);padding-block:1.4rem;color:var(--text-muted);font-size:.82rem;text-align:center;margin-top:2rem}
 </style>
 </head>
@@ -124,7 +132,7 @@ footer{border-top:1px solid var(--line);padding-block:1.4rem;color:var(--text-mu
   </div></div>
   <div class="login-wrap"><div class="card login-card">
     <h1 id="login-title">Client sign in</h1>
-    <p class="sub" id="login-sub">Manage your projects, share details and images, and message support.</p>
+    <p class="sub" id="login-sub">Send us photos straight off your phone, tell us what you want, and message us any time. We do the rest.</p>
     <div class="field hidden" id="f-name"><label for="name">Your name</label><input id="name" type="text" placeholder="Somchai P." autocomplete="name"></div>
     <div class="field hidden" id="f-biz"><label for="biz">Business (optional)</label><input id="biz" type="text" placeholder="Baanpong Café" autocomplete="organization"></div>
     <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="you@business.com" autocomplete="email"></div>
@@ -153,6 +161,18 @@ footer{border-top:1px solid var(--line);padding-block:1.4rem;color:var(--text-mu
 
   <div class="shell" id="dashboard">
     <div class="app-head"><h1>Your projects</h1><p>Everything Vibe Crafted is building for you, in one place.</p></div>
+
+    <div class="easy">
+      <h2>This is easier than it looks</h2>
+      <ol>
+        <li><b>Open your project</b> and write a line or two about what it's for. Rough notes are fine — we'll ask if anything's unclear.</li>
+        <li><b>Send us your pictures.</b> Ordinary phone photos are exactly what we want. No editing, no special sizes, no professional camera — we enhance, crop and optimise everything on our side.</li>
+        <li><b>Pick a look</b>, or just describe the vibe and let us suggest one. Nothing is final; we fine-tune it with you.</li>
+        <li><b>Message us</b> right here whenever you think of something. No forms, no ticket numbers.</li>
+      </ol>
+      <p>That's the whole job on your side. We build, host and look after the site — you approve it.</p>
+    </div>
+
     <div class="grid" id="proj-list"></div>
     <p class="muted" id="no-proj" style="margin-top:1rem"></p>
   </div>
@@ -182,7 +202,7 @@ footer{border-top:1px solid var(--line);padding-block:1.4rem;color:var(--text-mu
       <div class="theme-presets" id="theme-presets"></div>
       <details class="theme-ai" id="theme-ai">
         <summary>✨ Generate a custom theme with AI</summary>
-        <p class="muted" style="margin:.6rem 0">Describe your brand or the vibe you want, and/or add a few reference images. We'll suggest colours and a font — you can tweak them below before saving.</p>
+        <p class="muted" style="margin:.6rem 0">Describe your brand or the vibe you want, and/or add a few reference images — a photo of your shopfront, your packaging, anything with the right feel. Phone photos are fine. We'll suggest colours and a font, and you can tweak them below before saving.</p>
         <textarea id="th-prompt" rows="3" placeholder="e.g. Cozy artisan coffee shop — warm, earthy, handmade feel"></textarea>
         <div class="urlrow" style="flex-wrap:wrap;margin-top:.5rem">
           <button class="btn btn--ghost btn--sm" id="th-ai-imgbtn" type="button">Add reference images</button>
@@ -204,13 +224,14 @@ footer{border-top:1px solid var(--line);padding-block:1.4rem;color:var(--text-mu
     </div>
 
     <div class="card panel" style="margin-bottom:1.2rem">
-      <h2>Images</h2>
-      <p class="muted">Paste an image URL, or upload straight from your device (logo, photos, menu shots).</p>
+      <h2>Images &amp; photos</h2>
+      <p class="muted">Upload straight from your phone or computer, or paste an image URL — logo, food, rooms, staff, signage, menu shots.</p>
+      <p class="tip"><b>Send us normal pictures.</b> Everyday phone snaps are perfect — you don't need a photographer, an editing app or a particular size. We enhance them for you: brighten and colour-correct, straighten and crop, remove the clutter, cut out backgrounds where it helps, and compress them so the site still loads in under two seconds. Slightly dark, slightly crooked or a bit cluttered is fine — send it anyway and we'll fix it. Screenshots, WhatsApp forwards and photos of a printed menu all work.</p>
       <div class="thumbs" id="thumbs"></div>
       <div class="urlrow"><input id="new-url" placeholder="https://…"><button class="btn btn--primary btn--sm" id="add-url">Add URL</button></div>
       <div class="urlrow" style="margin-top:.5rem;flex-wrap:wrap">
-        <button class="btn btn--ghost btn--sm" id="upload-files-btn">⬆ Upload images</button>
-        <button class="btn btn--ghost btn--sm" id="upload-folder-btn">⬆ Upload a folder</button>
+        <button class="btn btn--ghost btn--sm" id="upload-files-btn">⬆ Upload photos</button>
+        <button class="btn btn--ghost btn--sm" id="upload-folder-btn">⬆ Upload a whole folder</button>
       </div>
       <input type="file" id="file-input" accept="image/*" multiple hidden>
       <input type="file" id="folder-input" webkitdirectory hidden>
@@ -220,6 +241,7 @@ footer{border-top:1px solid var(--line);padding-block:1.4rem;color:var(--text-mu
     <div class="card panel hidden" id="typo-panel" style="margin-bottom:1.2rem">
       <h2>Typography <span class="muted" style="font-weight:400;font-size:.78rem">— a website perk</span> <span class="pdot hidden" id="ping-typo"></span></h2>
       <p class="muted">Send us reference images of a thing — a name, a sign, a menu header — and we'll craft custom typography for it. Make one set per thing.</p>
+      <p class="tip">A quick phone photo of the sign or menu is all we need — we redraw it properly from there.</p>
       <div id="typo-list"></div>
       <div class="urlrow" style="margin-top:.9rem"><input id="typo-new-title" placeholder="New set name — e.g. Café name"><button class="btn btn--primary btn--sm" id="typo-add-set">Add set</button></div>
       <div id="typo-msg"></div>
@@ -272,7 +294,7 @@ let mode = "signin";
 function setMode(m){
   mode = m; const su = m === "signup";
   $("#login-title").textContent = su ? "Create your account" : "Client sign in";
-  $("#login-sub").textContent = su ? "Set up access to your projects with Vibe Crafted." : "Manage your projects, share details and images, and message support.";
+  $("#login-sub").textContent = su ? "Takes about a minute — then you can start sending us photos and notes." : "Send us photos straight off your phone, tell us what you want, and message us any time. We do the rest.";
   $("#f-name").classList.toggle("hidden", !su);
   $("#f-biz").classList.toggle("hidden", !su);
   $("#signin").textContent = su ? "Create account" : "Sign in";

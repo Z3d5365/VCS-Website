@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fast, Hand-Built Websites — Vibe Crafted</title>
-<meta name="description" content="Fast, hand-built websites, logos and hosting for restaurants, resorts and local businesses. Launch in two weeks — from ฿2,999.">
+<meta name="description" content="Fast, hand-built websites, logos and hosting for restaurants, resorts and local businesses. Launch in two weeks — from R1,499.">
 <link rel="canonical" href="https://websites.vibecraftedsoftware.com/">
 <link rel="alternate" hreflang="en" href="https://websites.vibecraftedsoftware.com/">
 <link rel="alternate" hreflang="th" href="https://websites.vibecraftedsoftware.com/th/">
@@ -16,7 +16,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Vibe Crafted">
 <meta property="og:title" content="Fast, Hand-Built Websites — Vibe Crafted">
-<meta property="og:description" content="Fast, hand-built websites, logos and hosting for restaurants, resorts and local businesses. From ฿2,999.">
+<meta property="og:description" content="Fast, hand-built websites, logos and hosting for restaurants, resorts and local businesses. From R1,499.">
 <meta property="og:url" content="https://websites.vibecraftedsoftware.com/">
 <meta property="og:image" content="https://websites.vibecraftedsoftware.com/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -816,6 +816,12 @@ details p { padding: 0 1.3rem 1.25rem; color: var(--text-soft); font-size: .9375
 }
 .contact-list a:hover { border-color: color-mix(in oklab, var(--accent) 45%, var(--line)); translate: 2px 0; }
 .contact-list .ico { width: 2.5rem; height: 2.5rem; border-radius: 10px; }
+.ico--wa, .ico--line {
+  background: color-mix(in oklab, #25d366 16%, transparent);
+  color: #12a150;
+  border-color: color-mix(in oklab, #25d366 30%, transparent);
+}
+[data-theme="dark"] .ico--wa, [data-theme="dark"] .ico--line { color: #4ae08a; }
 .contact-list small { display: block; color: var(--text-muted); font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; font-weight: 600; }
 .contact-list strong { font-weight: 560; letter-spacing: -.01em; }
 
@@ -844,6 +850,24 @@ form {
 @media (max-width: 520px) { .field-row { grid-template-columns: 1fr; } }
 .form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem; margin-block-start: .5rem; }
 .form-foot small { color: var(--text-muted); font-size: .8125rem; }
+
+@media (max-width: 640px) {
+  /* Card edge-to-edge-ish: more room for the fields on a narrow screen. */
+  form { padding: 1.15rem 1rem 1.3rem; border-radius: var(--r); }
+  .contact-list { gap: .7rem; margin-block-start: 1.5rem; }
+  .contact-list a, .contact-list div { padding: .85rem .9rem; gap: .75rem; grid-template-columns: 2.25rem 1fr; }
+  .contact-list .ico { width: 2.25rem; height: 2.25rem; }
+  .contact-list strong { font-size: .95rem; word-break: break-word; }
+
+  .field { margin-block-end: .9rem; }
+  .field-row { gap: .9rem; }
+  /* 16px = the threshold below which iOS Safari zooms the page on focus. */
+  .field :is(input, textarea, select) { font-size: 1rem; padding: .8rem .85rem; min-height: 2.9rem; }
+  .field textarea { min-height: 8rem; }
+  .form-foot { flex-direction: column; align-items: stretch; gap: .7rem; }
+  .form-foot .btn { width: 100%; justify-content: center; min-height: 3rem; }
+  .form-foot small { text-align: center; }
+}
 .form-msg {
   margin-block-start: 1rem; padding: .8rem 1rem;
   border-radius: var(--r-sm);
@@ -874,6 +898,13 @@ form {
 .cta h2 { font-size: clamp(1.8rem, 1.3rem + 2.2vw, 2.8rem); }
 .cta p { margin-block: .9rem 1.8rem; opacity: .92; max-width: 34rem; margin-inline: auto; }
 .cta .btn { --btn-bg: #fff; --btn-fg: #0c0c0c; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+.cta .btn--wa { --btn-bg: #25d366; --btn-fg: #05261a; }
+.cta-alt { margin-block-start: 1.1rem !important; font-size: .875rem; opacity: .85; }
+@media (max-width: 480px) {
+  .cta-actions { flex-direction: column; align-items: stretch; }
+  .cta-actions .btn { width: 100%; justify-content: center; }
+}
 
 /* ── 15. Footer ───────────────────────────────────── */
 .footer { border-top: 1px solid var(--line); background: var(--bg-sunk); }
@@ -887,7 +918,8 @@ form {
 .footer p { font-size: .9rem; color: var(--text-muted); max-width: 24rem; margin-block-start: .9rem; }
 .footer h4 { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); font-weight: 650; }
 .footer ul { list-style: none; padding: 0; margin-block-start: 1rem; display: grid; gap: .6rem; }
-.footer li a { font-size: .9rem; color: var(--text-soft); }
+.footer li a, .footer-plain { font-size: .9rem; color: var(--text-soft); }
+.footer-plain { display: inline-block; color: var(--text-muted); }
 .footer li a:hover { color: var(--accent); }
 .footer-bottom {
   display: flex; flex-wrap: wrap; gap: .75rem 1.5rem;
@@ -1021,7 +1053,7 @@ form {
     </div>
 
     <dl class="stats" data-reveal>
-      <div class="stat"><b>&lt;2s</b><span data-i18n="stat.load">Typical load on 4G</span></div>
+      <div class="stat"><b>&lt;2s</b><span data-i18n="stat.load">Typical page load on 4G</span></div>
       <div class="stat"><b data-i18n="stat.build.n">2 wks</b><span data-i18n="stat.build">Average build time</span></div>
       <div class="stat"><b data-i18n="stat.reply.n">24h</b><span data-i18n="stat.reply">Reply to every enquiry</span></div>
     </dl>
@@ -1234,8 +1266,8 @@ form {
     <!-- cur-switch:start -->
     <div class="cur-switch" data-reveal>
       <div class="cur-toggle" role="group" aria-label="Display currency">
-        <button type="button" class="cur-opt is-active" data-cur="usd" aria-pressed="true">$ USD</button>
-        <button type="button" class="cur-opt" data-cur="zar" aria-pressed="false">R ZAR</button>
+        <button type="button" class="cur-opt is-active" data-cur="zar" aria-pressed="true">R ZAR</button>
+        <button type="button" class="cur-opt" data-cur="usd" aria-pressed="false">$ USD</button>
       </div>
     </div>
     <!-- cur-switch:end -->
@@ -1244,7 +1276,7 @@ form {
       <div class="plan" data-reveal>
         <h3 data-i18n="plan1.title">Logo &amp; brand mark</h3>
         <p data-i18n="plan1.desc">For a business that needs to look like one.</p>
-        <div class="amount"><span class="from" data-i18n="price.from">from</span> <b data-thb="฿2,999" data-usd="$85" data-zar="R1,499">$85</b></div>
+        <div class="amount"><span class="from" data-i18n="price.from">from</span> <b data-thb="฿2,999" data-usd="$85" data-zar="R1,499">R1,499</b></div>
         <p class="upkeep" data-i18n="plan1.upkeep">One-off · 3–5 days</p>
         <ul class="feat">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> <span data-i18n="plan1.f1">Three concepts, one refined</span></li>
@@ -1259,7 +1291,7 @@ form {
         <span class="plan-flag" data-i18n="plan2.flag">Most chosen</span>
         <h3 data-i18n="plan2.title">Website</h3>
         <p data-i18n="plan2.desc">A complete site for your business, built to be found.</p>
-        <div class="amount"><span class="from" data-i18n="price.from">from</span> <b data-thb="฿19,999" data-usd="$570" data-zar="R9,999">$570</b></div>
+        <div class="amount"><span class="from" data-i18n="price.from">from</span> <b data-thb="฿19,999" data-usd="$570" data-zar="R9,999">R9,999</b></div>
         <ul class="feat">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> <span data-i18n="plan2.f1">Up to 6 pages, mobile-first</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> <span data-i18n="plan2.f2">Enquiry form, maps, socials</span></li>
@@ -1275,7 +1307,7 @@ form {
       <div class="plan" data-reveal style="--d:180ms">
         <h3 data-i18n="plan3.title">Hosting &amp; maintenance</h3>
         <p data-i18n="plan3.desc">Keep your site fast, secure and up to date.</p>
-        <div class="amount"><span class="from" data-i18n="price.from">from</span> <b data-thb="฿899" data-usd="$26" data-zar="R499">$26</b><span class="from" data-i18n="price.permonth">/month</span></div>
+        <div class="amount"><span class="from" data-i18n="price.from">from</span> <b data-thb="฿899" data-usd="$26" data-zar="R499">R499</b><span class="from" data-i18n="price.permonth">/month</span></div>
         <ul class="feat">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> <span data-i18n="plan3.f1">Reliable hosting, SSL and backups</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg> <span data-i18n="plan3.f2">Security updates and monitoring</span></li>
@@ -1289,7 +1321,7 @@ form {
     <p class="price-foot" data-reveal>
       <span data-i18n="pricefoot.1">Bank transfer.</span>
       <span data-i18n="pricefoot.2">Domain billed at cost.</span>
-      <span data-i18n="pricefoot.3">Cancel upkeep any time — the site stays yours.</span>
+      <span data-i18n="pricefoot.3">Cancel hosting any time — the site stays yours.</span>
     </p>
   </div>
 </section>
@@ -1392,15 +1424,23 @@ form {
               <span class="ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h3.5l1.8 4.4-2.2 1.6a11 11 0 0 0 6.4 6.4l1.6-2.2 4.4 1.8V19a1.6 1.6 0 0 1-1.7 1.6A16.5 16.5 0 0 1 3.4 5.2 1.6 1.6 0 0 1 5 3.5z"/></svg>
               </span>
-              <span><small data-i18n="contact.phone.label">Phone &amp; LINE</small><strong>+66 83 9696 555</strong></span>
+              <span><small data-i18n="contact.phone.label">Phone</small><strong>+66 83 9696 555</strong></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/66839696555" target="_blank" rel="noopener">
+              <span class="ico ico--wa" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2.2A9.78 9.78 0 0 0 2.26 12a9.66 9.66 0 0 0 1.33 4.9L2.2 21.8l5.03-1.32a9.79 9.79 0 0 0 4.81 1.24A9.78 9.78 0 0 0 21.82 12 9.78 9.78 0 0 0 12.04 2.2zm0 1.66a8.1 8.1 0 0 1 8.12 8.14 8.1 8.1 0 0 1-8.12 8.13 8.12 8.12 0 0 1-4.14-1.13l-.3-.18-3.06.8.82-2.98-.2-.31A8.07 8.07 0 0 1 3.92 12a8.1 8.1 0 0 1 8.12-8.14zM8.9 7.2c-.16 0-.4.06-.61.29-.21.22-.8.78-.8 1.9s.82 2.2.94 2.35c.11.16 1.58 2.43 3.86 3.32 1.9.74 2.28.6 2.69.56.41-.04 1.32-.54 1.5-1.06.19-.52.19-.97.14-1.07-.06-.09-.21-.15-.44-.26-.23-.12-1.32-.65-1.53-.72-.2-.08-.35-.11-.5.11-.14.22-.57.72-.7.87-.13.15-.26.17-.48.06-.23-.12-.97-.36-1.84-1.13-.68-.6-1.14-1.35-1.27-1.58-.13-.22-.02-.34.1-.45.1-.1.22-.27.34-.4.11-.14.15-.23.22-.38.08-.15.04-.28-.02-.4-.05-.11-.5-1.22-.68-1.67-.18-.44-.36-.38-.5-.38l-.42-.01z"/></svg>
+              </span>
+              <span><small data-i18n="contact.whatsapp.label">WhatsApp</small><strong>+66 83 9696 555</strong></span>
             </a>
           </li>
           <li>
             <div>
-              <span class="ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5l3 2"/></svg>
+              <span class="ico ico--line" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.9 3 2.75 6.4 2.75 10.58c0 3.74 3.29 6.88 7.73 7.47.3.07.71.2.82.46.09.24.06.6.03.85l-.13.79c-.04.23-.19.92.8.5.99-.42 5.33-3.16 7.27-5.41 1.34-1.48 1.98-2.98 1.98-4.66C21.25 6.4 17.1 3 12 3zM8.3 12.9h-1.8a.37.37 0 0 1-.37-.37V9.2c0-.2.17-.37.37-.37s.37.17.37.37v2.96H8.3c.2 0 .37.17.37.37s-.17.37-.37.37zm1.55-.37c0 .2-.17.37-.37.37a.37.37 0 0 1-.37-.37V9.2c0-.2.17-.37.37-.37s.37.17.37.37v3.33zm3.98 0a.37.37 0 0 1-.66.22l-1.7-2.32v2.1c0 .2-.17.37-.37.37a.37.37 0 0 1-.37-.37V9.2a.37.37 0 0 1 .67-.22l1.7 2.32V9.2c0-.2.16-.37.36-.37s.37.17.37.37v3.33zm2.53-2.04c.2 0 .37.17.37.37s-.17.37-.37.37h-1.06v.56h1.06c.2 0 .37.16.37.37 0 .2-.17.37-.37.37h-1.43a.37.37 0 0 1-.37-.37V9.2c0-.2.17-.37.37-.37h1.43c.2 0 .37.17.37.37s-.17.37-.37.37h-1.06v.55h1.06z"/></svg>
               </span>
-              <span><small data-i18n="contact.hours.label">Hours</small><strong data-i18n="contact.hours.val">Mon–Sat, 9am–6pm ICT (UTC+7)</strong></span>
+              <span><small data-i18n="contact.line.label">LINE</small><strong>+66 83 9696 555</strong></span>
             </div>
           </li>
         </ul>
@@ -1416,18 +1456,18 @@ form {
         <div class="field-row">
           <div class="field">
             <label for="f-name" data-i18n="form.name">Your name</label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Somchai P." data-i18n-ph="form.name.ph">
+            <input id="f-name" name="name" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="next" required placeholder="Somchai P." data-i18n-ph="form.name.ph">
           </div>
           <div class="field">
             <label for="f-biz" data-i18n="form.biz">Business</label>
-            <input id="f-biz" name="business" type="text" autocomplete="organization" placeholder="Baanpong Café" data-i18n-ph="form.biz.ph">
+            <input id="f-biz" name="business" type="text" autocomplete="organization" autocapitalize="words" enterkeyhint="next" placeholder="Baanpong Café" data-i18n-ph="form.biz.ph">
           </div>
         </div>
 
         <div class="field-row">
           <div class="field">
             <label for="f-email" data-i18n="form.email">Email</label>
-            <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+            <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="next" required placeholder="you@example.com">
           </div>
           <div class="field">
             <label for="f-service" data-i18n="form.service">What do you need?</label>
@@ -1443,7 +1483,7 @@ form {
 
         <div class="field">
           <label for="f-msg" data-i18n="form.msg">A few words about the project</label>
-          <textarea id="f-msg" name="message" required placeholder="We're a café. We have a Facebook page but no website, and we'd like somewhere customers can actually find us…" data-i18n-ph="form.msg.ph"></textarea>
+          <textarea id="f-msg" name="message" rows="5" enterkeyhint="send" required placeholder="We're a café. We have a Facebook page but no website, and we'd like somewhere customers can actually find us…" data-i18n-ph="form.msg.ph"></textarea>
         </div>
 
         <div class="form-foot">
@@ -1465,10 +1505,17 @@ form {
   <div class="cta" data-reveal>
     <h2 data-i18n="cta.title">Still running on a Facebook page?</h2>
     <p data-i18n="cta.sub">Let's fix that. Twenty minutes on the phone and you'll have a fixed price and a launch date.</p>
-    <a class="btn" href="tel:+66839696555">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h3.5l1.8 4.4-2.2 1.6a11 11 0 0 0 6.4 6.4l1.6-2.2 4.4 1.8V19a1.6 1.6 0 0 1-1.7 1.6A16.5 16.5 0 0 1 3.4 5.2 1.6 1.6 0 0 1 5 3.5z"/></svg>
-      <span data-i18n="cta.call">Call +66 83 9696 555</span>
-    </a>
+    <div class="cta-actions">
+      <a class="btn" href="tel:+66839696555">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h3.5l1.8 4.4-2.2 1.6a11 11 0 0 0 6.4 6.4l1.6-2.2 4.4 1.8V19a1.6 1.6 0 0 1-1.7 1.6A16.5 16.5 0 0 1 3.4 5.2 1.6 1.6 0 0 1 5 3.5z"/></svg>
+        <span data-i18n="cta.call">Call +66 83 9696 555</span>
+      </a>
+      <a class="btn btn--wa" href="https://wa.me/66839696555" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2.2A9.78 9.78 0 0 0 2.26 12a9.66 9.66 0 0 0 1.33 4.9L2.2 21.8l5.03-1.32a9.79 9.79 0 0 0 4.81 1.24A9.78 9.78 0 0 0 21.82 12 9.78 9.78 0 0 0 12.04 2.2zm0 1.66a8.1 8.1 0 0 1 8.12 8.14 8.1 8.1 0 0 1-8.12 8.13 8.12 8.12 0 0 1-4.14-1.13l-.3-.18-3.06.8.82-2.98-.2-.31A8.07 8.07 0 0 1 3.92 12a8.1 8.1 0 0 1 8.12-8.14zM8.9 7.2c-.16 0-.4.06-.61.29-.21.22-.8.78-.8 1.9s.82 2.2.94 2.35c.11.16 1.58 2.43 3.86 3.32 1.9.74 2.28.6 2.69.56.41-.04 1.32-.54 1.5-1.06.19-.52.19-.97.14-1.07-.06-.09-.21-.15-.44-.26-.23-.12-1.32-.65-1.53-.72-.2-.08-.35-.11-.5.11-.14.22-.57.72-.7.87-.13.15-.26.17-.48.06-.23-.12-.97-.36-1.84-1.13-.68-.6-1.14-1.35-1.27-1.58-.13-.22-.02-.34.1-.45.1-.1.22-.27.34-.4.11-.14.15-.23.22-.38.08-.15.04-.28-.02-.4-.05-.11-.5-1.22-.68-1.67-.18-.44-.36-.38-.5-.38l-.42-.01z"/></svg>
+        <span data-i18n="cta.whatsapp">WhatsApp us</span>
+      </a>
+    </div>
+    <p class="cta-alt" data-i18n="cta.alt">Or message us on LINE — +66 83 9696 555</p>
   </div>
 </div>
 </main>
@@ -1513,7 +1560,9 @@ form {
       <h4 data-i18n="footer.touch">Get in touch</h4>
       <ul>
         <li><a href="mailto:info@vibecraftedsoftware.com" data-i18n="contact.email.label">Email</a></li>
-        <li><a href="tel:+66839696555">+66 83 9696 555</a></li>
+        <li><a href="tel:+66839696555"><span data-i18n="contact.phone.label">Phone</span> +66 83 9696 555</a></li>
+        <li><a href="https://wa.me/66839696555" target="_blank" rel="noopener"><span data-i18n="contact.whatsapp.label">WhatsApp</span> +66 83 9696 555</a></li>
+        <li><span class="footer-plain"><span data-i18n="contact.line.label">LINE</span> +66 83 9696 555</span></li>
         <li><a href="#contact" data-i18n="footer.brief">Project brief</a></li>
         <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
       </ul>
@@ -1522,7 +1571,6 @@ form {
 
   <div class="shell footer-corp">
     <p><strong>Vibe Crafted Software Co. Ltd.</strong> · Tax ID 0505569001285</p>
-    <p>108 Moo 8, T. Ontai, San Kamphaeng District, Chiang Mai Province, 50130, Thailand</p>
   </div>
 
   <div class="shell footer-bottom">
@@ -1581,7 +1629,7 @@ form {
     "hero.lede": "Vibe Crafted สร้างเว็บไซต์และแบรนด์ที่สวยงามและโหลดเร็ว สำหรับร้านอาหาร รีสอร์ต และธุรกิจท้องถิ่น — ที่ไหนก็ตามที่มีอินเทอร์เน็ตดี ๆ ไม่ใช้เครื่องมือสำเร็จรูป ไม่มีส่วนเกิน ไม่มีค่าใช้จ่ายแอบแฝงรายเดือน",
     "hero.cta1": "ขอใบเสนอราคาภายใน 24 ชั่วโมง",
     "hero.cta2": "ดูผลงานล่าสุด",
-    "stat.load": "เวลาโหลดทั่วไปบน 4G",
+    "stat.load": "เวลาโหลดหน้าเว็บทั่วไปบน 4G",
     "stat.build.n": "2 สัปดาห์",
     "stat.build": "เวลาสร้างโดยเฉลี่ย",
     "stat.reply.n": "24 ชม.",
@@ -1674,7 +1722,7 @@ form {
     "plan3.f4": "ยกเลิกได้ทุกเมื่อ — เว็บยังเป็นของคุณ",
     "pricefoot.1": "โอนเงินหรือพร้อมเพย์",
     "pricefoot.2": "คิดค่าโดเมนตามจริง",
-    "pricefoot.3": "ยกเลิกค่าดูแลได้ทุกเมื่อ — เว็บยังเป็นของคุณ",
+    "pricefoot.3": "ยกเลิกโฮสติ้งได้ทุกเมื่อ — เว็บยังเป็นของคุณ",
     "voices.eyebrow": "ลูกค้า",
     "voices.title": "สิ่งที่พวกเขาพูดหลังจากนั้น",
     "quote1": "“เซดทำเว็บไซต์ให้ร้านอาหารของผม ตอนนี้คนหาเราเจอจากอินเทอร์เน็ต บริการดีมาก”",
@@ -1700,9 +1748,9 @@ form {
     "contact.title": "บอกผมว่าคุณต้องการอะไร",
     "contact.sub": "แค่ประโยคสองประโยคก็เริ่มได้ คุณจะได้รับคำตอบจริงจากผม — เซด — ภายใน 24 ชั่วโมง พร้อมราคาและกำหนดวัน",
     "contact.email.label": "อีเมล",
-    "contact.phone.label": "โทรศัพท์ &amp; LINE",
-    "contact.hours.label": "เวลาทำการ",
-    "contact.hours.val": "จันทร์–เสาร์, 9:00–18:00 น. ICT (UTC+7)",
+    "contact.phone.label": "โทรศัพท์",
+    "contact.whatsapp.label": "WhatsApp",
+    "contact.line.label": "LINE",
     "form.name": "ชื่อของคุณ",
     "form.name.ph": "สมชาย พ.",
     "form.biz": "ธุรกิจ",
@@ -1721,6 +1769,8 @@ form {
     "cta.title": "ยังใช้แค่เพจ Facebook อยู่ไหม?",
     "cta.sub": "มาแก้กันเถอะ ยี่สิบนาทีทางโทรศัพท์ แล้วคุณจะได้ราคาแบบตายตัวและวันเปิดตัว",
     "cta.call": "โทร +66 83 9696 555",
+    "cta.whatsapp": "แชทผ่าน WhatsApp",
+    "cta.alt": "หรือทักเราทาง LINE — +66 83 9696 555",
     "footer.blurb": "สตูดิโอดิจิทัล เว็บไซต์และแบรนด์มาร์กสำหรับธุรกิจที่อยากเป็นเจ้าของพื้นที่ของตัวเองบนอินเทอร์เน็ต มากกว่าจะไปเช่าเขาอยู่",
     "footer.studio": "สตูดิโอ",
     "footer.services": "บริการ",
@@ -1841,7 +1891,7 @@ form {
         store.set("zz-cur", cur);
       };
       curOpts.forEach(b => b.addEventListener("click", () => setCur(b.dataset.cur)));
-      if (store.get("zz-cur") === "zar") setCur("zar");
+      if (store.get("zz-cur") === "usd") setCur("usd");   // ZAR is the default; USD only if chosen
     }
   }
 
