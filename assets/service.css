@@ -89,19 +89,36 @@ footer a{color:var(--text-soft)}
 .search-form input::-webkit-search-cancel-button{cursor:pointer}
 .search-status{color:var(--text-muted);font-size:.9rem;margin-block:1.1rem .4rem;max-width:42rem}
 .search-results{display:grid;gap:.9rem;max-width:46rem}
-.sr{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.2rem 1.3rem;box-shadow:var(--shadow-sm)}
+/* The whole card is one click target: the title link stretches an invisible
+   ::after over the card, so there is still exactly one link for a screen
+   reader and for the keyboard. Section links opt back out via z-index. */
+.sr{
+  position:relative;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:1.2rem 2.6rem 1.2rem 1.3rem;box-shadow:var(--shadow-sm);
+  cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s
+}
+.sr:hover{border-color:color-mix(in oklab,var(--accent) 45%,var(--line));box-shadow:0 6px 22px -12px color-mix(in oklab,var(--accent) 60%,transparent);transform:translateY(-2px)}
+.sr:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in oklab,var(--accent) 18%,transparent)}
+.sr__go{position:absolute;top:1.15rem;right:1.1rem;color:var(--text-muted);display:grid;place-items:center;transition:color .2s,translate .2s}
+.sr__go svg{width:1.05rem;height:1.05rem}
+.sr:hover .sr__go{color:var(--accent);translate:3px 0}
 .sr__title{font-size:1.08rem;letter-spacing:-.01em;margin:0}
-.sr__title a{text-decoration:none}
-.sr__title a:hover{color:var(--accent)}
+.sr__title a{text-decoration:none;outline:none}
+.sr__title a::after{content:"";position:absolute;inset:0;border-radius:inherit}
+.sr:hover .sr__title a{color:var(--accent)}
 .sr__url{font-size:.78rem;color:var(--text-muted);margin-top:.15rem;word-break:break-word}
 .sr__excerpt{font-size:.93rem;color:var(--text-soft);margin-top:.6rem}
 .sr__excerpt mark{background:color-mix(in oklab,var(--mint) 26%,transparent);color:inherit;border-radius:3px;padding:0 .12em}
 .sr__subhead{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-top:1rem}
 .sr__subs{list-style:none;display:grid;gap:.3rem;margin-top:.45rem}
-.sr__subs a{font-size:.9rem;color:var(--text-soft);text-decoration:none;display:inline-block;padding:.15rem 0}
+.sr__subs li{justify-self:start}
+.sr__subs a{position:relative;z-index:1;font-size:.9rem;color:var(--text-soft);text-decoration:none;display:inline-block;padding:.15rem 0}
 .sr__subs a::before{content:"↳ ";color:var(--text-muted)}
 .sr__subs a:hover{color:var(--accent)}
 @media (max-width:640px){
   .search-form input{font-size:1rem;padding:.85rem 1rem .85rem 2.8rem}
-  .sr{padding:1rem 1.05rem;border-radius:var(--r-sm)}
+  .sr{padding:1rem 2.2rem 1rem 1.05rem;border-radius:var(--r-sm)}
+  .sr__go{top:.95rem;right:.85rem}
 }
+
+@media (prefers-reduced-motion:reduce){.sr,.sr__go{transition:none}.sr:hover{transform:none}.sr:hover .sr__go{translate:none}}

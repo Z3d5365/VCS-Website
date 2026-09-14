@@ -96,7 +96,10 @@
       .map(s => `<li><a href="${esc(s.url)}">${esc(s.title)}</a></li>`)
       .join("");
 
+    /* The whole card is the link: .sr__title a carries a stretched ::after
+       overlay, and the section links sit above it on their own z-index. */
     return `<article class="sr">
+      <span class="sr__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       <h2 class="sr__title"><a href="${esc(d.url)}">${title}</a></h2>
       <p class="sr__url">${esc(pretty(d.url))}</p>
       <p class="sr__excerpt">${cleanExcerpt(d.excerpt)}</p>
