@@ -378,11 +378,12 @@ footer.foot a { color: var(--text-soft); }
 
   <!-- ── NOTE ────────────────────────────────────── -->
   <section class="sec">
-    <h2>Two systems, one site <span class="hint">worth knowing before you edit</span></h2>
-    <p>The homepage carries its styles <strong>inline in <code>index.html</code></strong> and uses a near-black accent. The subpages — <code>/services/…</code> and <code>/search/</code> — share <strong><code>/assets/service.css</code></strong>, which defines its own tokens with a <em>violet</em> accent (<code>#6d5efc</code>, <code>#8b7dff</code> dark) and a violet→mint gradient. The two are deliberately close but not identical, so a token changed in one place does not follow into the other.</p>
+    <h2>Where the styles live <span class="hint">worth knowing before you edit</span></h2>
+    <p>One monochrome system across the whole site: a near-black accent in light, near-white in dark, with violet kept for hover states and mint for ticks and search highlights. The values are defined twice — <strong>inline in <code>index.html</code></strong> for the homepage, and in <strong><code>/assets/service.css</code></strong> for every other page — because the homepage has no external sheet to import. They are identical on purpose, so a token changed in one must be changed in the other.</p>
     <div class="spec">
       <div class="row"><span class="k">index.html</span><span class="v">Homepage tokens + all homepage components. Source of truth for this page — the block at the top of this file mirrors it.</span></div>
-      <div class="row"><span class="k">assets/service.css</span><span class="v">Subpage + search tokens and components. Violet accent variant.</span></div>
+      <div class="row"><span class="k">assets/service.css</span><span class="v">Subpage + search tokens and components, plus the shared navbar. Mirrors the homepage tokens.</span></div>
+      <div class="row"><span class="k">assets/site-nav.js</span><span class="v">Shared header behaviour for every page but the homepage — theme, sticky bar, burger, "/" hotkey.</span></div>
       <div class="row"><span class="k">portal/index.html</span><span class="v">Client portal, inline, its own smaller token set.</span></div>
       <div class="row"><span class="k">build/build-th.js</span><span class="v">Bakes the Thai page from index.html — never hand-edit th/index.html.</span></div>
     </div>

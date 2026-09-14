@@ -88,8 +88,11 @@ link rewrites). **Never hand-edit generated locale files** — edit the source a
 - **Backend:** Supabase project `vdgdbjesjoyfkfhqgdna` (`https://vdgdbjesjoyfkfhqgdna.supabase.co`);
   tables `clients / projects / project_images / support_messages / admins`; setup in
   `supabase/schema.sql` + `supabase/admin.sql`. Anon key is public; never add the service_role key.
-- **Design tokens:** accent violet `#6d5efc` (dark `#8b7dff`), mint `#0fb894` (dark `#2ee0b5`),
-  gradient violet→mint; bg `#fbfaf8` / `#0a0a0f`
+- **Design tokens:** monochrome. Accent `#0c0c0c` (dark `#f0f0f0`), accent-ink `#fff` (dark
+  `#0c0c0c`); violet `#4f46e5` (dark `#6366f1`) is a **hover accent only**, mint `#14b8a6` (dark
+  `#2dd4bf`) for ticks and search highlights; bg `#fbfaf8` / `#0c0c0c`. `--band` stays dark in both
+  themes because it always carries white text. Defined in `index.html` :root and mirrored in
+  `assets/service.css` — change both.
 - **Contact / forms:** Web3Forms → `info@zzdigital.awsapps.com`; phone/LINE `+66 83 9696 555`
 - **Deploy:** run `bash scripts/deploy.sh` — it rebuilds Thai (`node build/build-th.js`),
   rebuilds the Pagefind search index, uploads the public allowlist (never `sync .`), syncs
