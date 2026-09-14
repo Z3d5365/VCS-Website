@@ -390,6 +390,7 @@ p { text-wrap: pretty; }
 :root[data-theme="dark"] .icon-moon { display: none; }
 
 .burger { display: none; }
+.nav-search { display: none; }
 
 @media (max-width: 880px) {
   .nav {
@@ -404,6 +405,8 @@ p { text-wrap: pretty; }
   .nav[data-open] { display: flex; }
   .nav a { padding: .8rem .75rem; font-size: 1.05rem; }
   .burger { display: grid; }
+  .nav-search { display: block; }
+  #search-link { display: none; }
   .bar .btn--primary { display: none; }
 }
 
@@ -972,6 +975,7 @@ form {
       <a href="#process" data-i18n="nav.process">Process</a>
       <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a class="nav-search" href="/search/" data-i18n="nav.search">Search</a>
       <a class="nav-login" href="https://portal.zzdigitaldesign.com/portal/" data-i18n="nav.login">Log in</a>
     </nav>
 
@@ -979,6 +983,10 @@ form {
       <a class="lang-opt is-active" href="/" data-lang="en" hreflang="en" aria-current="true">EN</a>
       <a class="lang-opt" href="/th/" data-lang="th" hreflang="th">ไทย</a>
     </div>
+
+    <a class="icon-btn" id="search-link" href="/search/" aria-label="Search the site" title="Search (press /)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    </a>
 
     <button class="icon-btn" id="theme" type="button" aria-label="Switch colour theme">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
@@ -1002,7 +1010,7 @@ form {
   </div>
 </header>
 
-<main id="main">
+<main id="main" data-pagefind-body>
 <span id="top"></span>
 
 <!-- ══ HERO ════════════════════════════════════════ -->
@@ -1439,7 +1447,7 @@ form {
         </ul>
       </div>
 
-      <form id="brief" data-reveal style="--d:100ms" novalidate>
+      <form id="brief" data-reveal style="--d:100ms" novalidate data-pagefind-ignore>
         <!-- Honeypot: hidden from real users; bots fill it and get silently dropped.
              Named/labelled to avoid browser autofill heuristics. -->
         <div class="form-honeypot" aria-hidden="true">
@@ -1771,6 +1779,7 @@ form {
     "footer.svc.hosting": "โฮสติ้งและดูแลเว็บ",
     "footer.svc.logo": "โลโก้และแบรนด์",
     "footer.svc.seo": "SEO ท้องถิ่น",
+    "nav.search": "ค้นหา",
     "footer.touch": "ติดต่อเรา",
     "footer.brief": "รายละเอียดโปรเจกต์",
     "footer.copy": "Vibe Crafted · สร้างด้วยมืออย่างพิถีพิถัน",
@@ -1818,6 +1827,15 @@ form {
   burger.addEventListener("click", () => setNav(!nav.hasAttribute("data-open")));
   nav.addEventListener("click", e => { if (e.target.closest("a")) setNav(false); });
   addEventListener("keydown", e => { if (e.key === "Escape") setNav(false); });
+
+  /* "/" jumps to the search page, the way most doc sites behave. */
+  addEventListener("keydown", e => {
+    if (e.key !== "/" || e.metaKey || e.ctrlKey || e.altKey) return;
+    const el = document.activeElement;
+    if (el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName))) return;
+    e.preventDefault();
+    location.href = root.lang === "th" ? "/th/search/" : "/search/";
+  });
   matchMedia("(min-width: 881px)").addEventListener("change", e => { if (e.matches) setNav(false); });
 
   /* ── reveal on scroll ──────────────────────────── */

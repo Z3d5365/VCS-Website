@@ -91,8 +91,13 @@ link rewrites). **Never hand-edit generated locale files** — edit the source a
 - **Design tokens:** accent violet `#6d5efc` (dark `#8b7dff`), mint `#0fb894` (dark `#2ee0b5`),
   gradient violet→mint; bg `#fbfaf8` / `#0a0a0f`
 - **Contact / forms:** Web3Forms → `info@zzdigital.awsapps.com`; phone/LINE `+66 83 9696 555`
-- **Deploy:** rebuild Thai (`node build/build-th.js`) if `index.html`/`TH` changed, then
-  `aws s3 cp <file> s3://websites.vibecraftedsoftware.com/<path>` each changed file (see Static
-  conventions), then invalidate `EBJNRLIZ8CTTY` with `/*`
+- **Deploy:** run `bash scripts/deploy.sh` — it rebuilds Thai (`node build/build-th.js`),
+  rebuilds the Pagefind search index, uploads the public allowlist (never `sync .`), syncs
+  `/pagefind/`, and invalidates `EBJNRLIZ8CTTY` with `/*`. For a one-file tweak you can still
+  `aws s3 cp <file> s3://websites.vibecraftedsoftware.com/<path>` by hand, but then the search
+  index is stale until the next full deploy.
+- **Search:** Pagefind. `/search/` + `/th/search/` (both `noindex`) render results via
+  `assets/search.js`; only `<main data-pagefind-body>` is indexed, so nav/footer chrome stays out.
+  The `/pagefind/` bundle is a build artifact — gitignored, rebuilt on every deploy.
 - **Brand:** name `ZZDigital` in titles/meta/schema; visible nav wordmark `ZZ Digital`
 - **More detail:** `docs/SEO-PLAYBOOK.md` (SEO plan + audit)

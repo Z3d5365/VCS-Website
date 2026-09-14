@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /pagefind/
 
 Sitemap: https://websites.vibecraftedsoftware.com/sitemap.xml

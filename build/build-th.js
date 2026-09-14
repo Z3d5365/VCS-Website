@@ -100,6 +100,10 @@ html = replaceOne(html,
 
 /* 9b. Rewrite internal service links to the Thai tree (/services/… → /th/services/…) */
 html = html.split('href="/services/').join('href="/th/services/');
+/* 9b2. Search link → Thai search page */
+html = html.split('href="/search/"').join('href="/th/search/"');
+html = replaceOne(html, 'aria-label="Search the site" title="Search (press /)"', 'aria-label="ค้นหาในเว็บไซต์" title="ค้นหา"', "search button labels");
+
 /* 9c. The brand/home link → Thai home */
 html = html.split('href="/" aria-label').join('href="/th/" aria-label');
 

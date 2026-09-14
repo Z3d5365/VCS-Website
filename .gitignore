@@ -24,3 +24,6 @@ desktop.ini
 distconfig.json
 bucket-policy.json
 *-policy.json
+
+# Search index (rebuilt on every deploy by scripts/deploy.sh)
+/pagefind/

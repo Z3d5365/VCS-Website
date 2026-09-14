@@ -46,6 +46,7 @@
         <a href="/services/hosting/" data-lang="en" hreflang="en">EN</a>
         <a class="on" href="/th/services/hosting/" data-lang="th" hreflang="th">ไทย</a>
       </span>
+      <a class="icon-btn" href="/th/search/" aria-label="ค้นหาในเว็บไซต์" title="ค้นหา"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></a>
       <button class="icon-btn" id="theme" type="button" aria-label="สลับธีมสี">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
@@ -53,7 +54,7 @@
     </nav>
   </div>
 </header>
-<main>
+<main data-pagefind-body>
 <div class="shell"><nav class="crumb" aria-label="เส้นทาง"><a href="/th/">หน้าแรก</a> › โฮสติ้งและดูแลเว็บ</nav></div>
 <div class="shell hero">
   <span class="eyebrow">โฮสติ้งและดูแลเว็บ</span>
@@ -101,6 +102,7 @@
   const t=document.getElementById("theme"); if(t)t.addEventListener("click",()=>{const n=root.dataset.theme==="dark"?"light":"dark";store.set("zz-theme",n);root.dataset.theme=n;});
   document.querySelectorAll(".pill a").forEach(a=>a.addEventListener("click",()=>store.set("zz-lang",a.dataset.lang)));
   const y=document.getElementById("year"); if(y)y.textContent=new Date().getFullYear();
+  addEventListener("keydown",e=>{if(e.key!=="/"||e.metaKey||e.ctrlKey||e.altKey)return;const el=document.activeElement;if(el&&(el.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName)))return;e.preventDefault();location.href="/th/search/";});
 })();
 </script>
 </body>
